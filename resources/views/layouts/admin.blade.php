@@ -23,16 +23,35 @@
     <nav id="sidebar" class="sidebar js-sidebar">
         <div class="sidebar-content js-simplebar">
 
-            <a class="sidebar-brand brand-logo" href="{{ route('dashboard') }}">
-                <div class="brand-icon">
-                    <i data-feather="home"></i>
-                </div>
+           <a class="sidebar-brand brand-logo" href="{{ route('dashboard') }}">
+    <div class="brand-mark city-logo">
+    <svg viewBox="0 0 64 64" aria-hidden="true">
+        <path d="M8 54H56" />
+        <path d="M14 54V27L25 19L36 27V54" />
+        <path d="M28 54V14H48V54" />
+        <path d="M18 32H22" />
+        <path d="M18 39H22" />
+        <path d="M18 46H22" />
+        <path d="M30 21H34" />
+        <path d="M30 28H34" />
+        <path d="M30 35H34" />
+        <path d="M30 42H34" />
+        <path d="M40 21H44" />
+        <path d="M40 28H44" />
+        <path d="M40 35H44" />
+        <path d="M40 42H44" />
+        <path d="M25 19V11" />
+        <path d="M21 11H29" />
+        <circle cx="25" cy="8" r="2" />
+        <path d="M48 31L54 26V54" />
+    </svg>
+</div>
 
-                <div class="brand-text">
-                    <span class="brand-title">Smart City</span>
-                    <span class="brand-subtitle">إدارة البلاغات</span>
-                </div>
-            </a>
+    <div class="brand-text">
+        <span class="brand-title">Smart City</span>
+        <span class="brand-subtitle">نظام إدارة البلاغات</span>
+    </div>
+</a>
 
             <ul class="sidebar-nav">
 

@@ -8,6 +8,10 @@
 
     <link href="{{ asset('admin/css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('admin/css/custom.css') }}" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">resources/views/layouts/admin.blade.php
+
 </head>
 
 <body>
@@ -16,13 +20,10 @@
     <nav id="sidebar" class="sidebar js-sidebar">
         <div class="sidebar-content js-simplebar">
 
-            <a class="sidebar-brand" href="/dashboard">
-                <span class="align-middle">
-                    Smart City
-                    <br>
-                    <small>إدارة البلاغات</small>
-                </span>
-            </a>
+        <a class="sidebar-brand" href="{{ route('dashboard') }}">
+    <span>Smart City</span>
+    <span class="brand-subtitle">إدارة البلاغات</span>
+</a>
 
             <ul class="sidebar-nav">
 
@@ -87,24 +88,46 @@
                 <i class="hamburger align-self-center"></i>
             </a>
 
-            <form class="d-none d-sm-inline-block me-3">
-                <div class="input-group input-group-navbar">
-                    <input type="text" class="form-control" placeholder="ابحث عن بلاغ...">
-                    <button class="btn" type="button">
-                        <i class="align-middle" data-feather="search"></i>
-                    </button>
-                </div>
-            </form>
+            <nav class="navbar navbar-expand navbar-light navbar-bg">
 
-            <div class="navbar-collapse collapse">
-                <ul class="navbar-nav navbar-align">
-                    <li class="nav-item">
-                        <span class="nav-link text-dark">
-                            مرحباً، Admin
-                        </span>
-                    </li>
-                </ul>
+<a class="sidebar-toggle js-sidebar-toggle">
+    <i class="hamburger align-self-center"></i>
+</a>
+
+<div class="navbar-collapse collapse">
+    <ul class="navbar-nav navbar-align ms-auto">
+        <li class="nav-item me-3">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="ابحث عن بلاغ...">
             </div>
+        </li>
+
+        <li class="nav-item dropdown">
+            <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
+                <i class="align-middle" data-feather="settings"></i>
+            </a>
+
+            <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
+                <span class="top-user">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="user">
+                    <span>
+                        <p class="name">أحمد محمد</p>
+                        <p class="role">Admin</p>
+                    </span>
+                </span>
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-end">
+                <a class="dropdown-item" href="#">الملف الشخصي</a>
+                <a class="dropdown-item" href="#">الإعدادات</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">تسجيل الخروج</a>
+            </div>
+        </li>
+    </ul>
+</div>
+
+</nav>
 
         </nav>
 

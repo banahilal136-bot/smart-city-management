@@ -49,3 +49,6 @@ Route::get('/report-types/create', function () {
 Route::get('/report-types/{id}/edit', function ($id) {
     return view('report_types.edit');
 })->name('report-types.edit');
+Route::get('/dashboard', function () {
+    return view('dashboard.index');
+})->name('dashboard');

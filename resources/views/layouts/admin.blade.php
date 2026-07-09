@@ -90,6 +90,12 @@
 
             <nav class="navbar navbar-expand navbar-light navbar-bg">
 
+            <button type="button" id="themeToggle" class="theme-switch-fancy" aria-label="تبديل الوضع">
+    <span class="theme-switch-shine"></span>
+    <span id="themeIcon" class="theme-switch-icon">🌙</span>
+</button>
+
+
 <a class="sidebar-toggle js-sidebar-toggle">
     <i class="hamburger align-self-center"></i>
 </a>
@@ -101,6 +107,7 @@
                 <input type="text" class="form-control" placeholder="ابحث عن بلاغ...">
             </div>
         </li>
+      
 
         <li class="nav-item dropdown">
             <a class="nav-icon dropdown-toggle d-inline-block d-sm-none" href="#" data-bs-toggle="dropdown">
@@ -141,5 +148,41 @@
 </div>
 
 <script src="{{ asset('admin/js/app.js') }}"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+
+        if (!themeToggle || !themeIcon) {
+            return;
+        }
+
+        function applyTheme(theme) {
+            const isDark = theme === 'dark';
+
+            document.body.classList.toggle('dark-mode', isDark);
+            themeToggle.classList.toggle('is-dark', isDark);
+
+            themeIcon.textContent = isDark ? '☀️' : '🌙';
+
+            themeToggle.setAttribute(
+                'aria-label',
+                isDark ? 'تفعيل الوضع النهاري' : 'تفعيل الوضع الليلي'
+            );
+
+            localStorage.setItem('theme', theme);
+        }
+
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        applyTheme(savedTheme);
+
+        themeToggle.addEventListener('click', function () {
+            const currentTheme = document.body.classList.contains('dark-mode') ? 'dark' : 'light';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            applyTheme(newTheme);
+        });
+    });
+</script>
 </body>
 </html>

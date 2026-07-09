@@ -536,3 +536,370 @@ textarea {
 .js-sidebar-toggle {
     display: none !important;
 }
+/* =========================
+   Light / Dark Mode
+========================= */
+
+.theme-toggle-btn {
+    background: #eef5f4 !important;
+    color: #0b5a55 !important;
+    border: 1px solid #d7e8e5 !important;
+    border-radius: 14px !important;
+    font-weight: 800 !important;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.theme-toggle-btn:hover {
+    background: #dff0ed !important;
+    color: #084b46 !important;
+}
+
+/* الوضع الليلي */
+body.dark-mode {
+    background: #0f172a !important;
+    color: #e5e7eb !important;
+
+    --page-bg: #0f172a;
+    --card-bg: #111827;
+    --border: #263244;
+    --text-main: #e5e7eb;
+    --text-muted: #9ca3af;
+}
+
+/* الخلفية العامة */
+body.dark-mode .main,
+body.dark-mode .content,
+body.dark-mode main.content,
+body.dark-mode .wrapper {
+    background: #0f172a !important;
+    color: #e5e7eb !important;
+}
+
+/* النافبار */
+body.dark-mode .navbar {
+    background: #111827 !important;
+    border-bottom: 1px solid #263244 !important;
+}
+
+body.dark-mode .top-user .name {
+    color: #e5e7eb !important;
+}
+
+body.dark-mode .top-user .role {
+    color: #9ca3af !important;
+}
+
+/* زر تبديل الوضع داخل الليلي */
+body.dark-mode .theme-toggle-btn {
+    background: #1f2937 !important;
+    color: #facc15 !important;
+    border-color: #334155 !important;
+}
+
+/* الكروت */
+body.dark-mode .card {
+    background: #111827 !important;
+    color: #e5e7eb !important;
+    border: 1px solid #263244 !important;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35) !important;
+}
+
+body.dark-mode .card-header {
+    background: #111827 !important;
+    border-bottom: 1px solid #263244 !important;
+}
+
+body.dark-mode .card-body {
+    background: #111827 !important;
+}
+
+/* العناوين */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6,
+body.dark-mode .page-title,
+body.dark-mode .card-title,
+body.dark-mode .stat-number,
+body.dark-mode .stat-title,
+body.dark-mode .info-value,
+body.dark-mode .timeline-title,
+body.dark-mode .report-location-title {
+    color: #e5e7eb !important;
+}
+
+body.dark-mode .text-muted,
+body.dark-mode .page-subtitle,
+body.dark-mode .stat-desc,
+body.dark-mode .info-label,
+body.dark-mode .timeline-date,
+body.dark-mode .report-location-meta {
+    color: #9ca3af !important;
+}
+
+/* الجداول */
+body.dark-mode .table {
+    color: #e5e7eb !important;
+}
+
+body.dark-mode .table thead th {
+    background: #172033 !important;
+    color: #e5e7eb !important;
+    border-color: #263244 !important;
+}
+
+body.dark-mode .table td,
+body.dark-mode .table th {
+    border-color: #263244 !important;
+}
+
+body.dark-mode .table-hover tbody tr:hover {
+    background: #1f2937 !important;
+}
+
+/* الفورمات */
+body.dark-mode .form-control,
+body.dark-mode .form-select,
+body.dark-mode textarea {
+    background: #0b1220 !important;
+    color: #e5e7eb !important;
+    border-color: #334155 !important;
+}
+
+body.dark-mode .form-control::placeholder,
+body.dark-mode textarea::placeholder {
+    color: #94a3b8 !important;
+}
+
+/* الأزرار الفاتحة */
+body.dark-mode .btn-light {
+    background: #1f2937 !important;
+    color: #e5e7eb !important;
+    border-color: #334155 !important;
+}
+
+/* خلفيات بيضاء قديمة */
+body.dark-mode .bg-white {
+    background-color: #111827 !important;
+}
+
+/* الخريطة والصناديق */
+body.dark-mode .dashboard-map,
+body.dark-mode .report-map-box,
+body.dark-mode .map-box,
+body.dark-mode .main-map {
+    background:
+        linear-gradient(135deg, rgba(15, 23, 42, .92), rgba(30, 41, 59, .92)),
+        repeating-linear-gradient(0deg, transparent 0 38px, rgba(75,142,136,.12) 39px),
+        repeating-linear-gradient(90deg, transparent 0 38px, rgba(75,142,136,.12) 39px) !important;
+    border-color: #334155 !important;
+}
+
+/* عناصر داخل صفحات البلاغات */
+body.dark-mode .image-placeholder,
+body.dark-mode .status-box,
+body.dark-mode .report-location-item,
+body.dark-mode .quick-action {
+    background: #0b1220 !important;
+    border-color: #334155 !important;
+    color: #e5e7eb !important;
+}
+
+/* لابل الخريطة */
+body.dark-mode .map-label {
+    background: #111827 !important;
+    color: #e5e7eb !important;
+    border-color: #334155 !important;
+}
+
+/* التنبيهات */
+body.dark-mode .alert-success {
+    background: #12352f !important;
+    color: #d1fae5 !important;
+    border-color: #245a50 !important;
+}
+
+body.dark-mode .alert-warning {
+    background: #3b2f12 !important;
+    color: #fde68a !important;
+    border-color: #785f1d !important;
+}
+
+/* Dropdown */
+body.dark-mode .dropdown-menu {
+    background: #111827 !important;
+    border-color: #334155 !important;
+}
+
+body.dark-mode .dropdown-item {
+    color: #e5e7eb !important;
+}
+
+body.dark-mode .dropdown-item:hover {
+    background: #1f2937 !important;
+}
+
+/* Progress */
+body.dark-mode .progress {
+    background: #263244 !important;
+}
+/* =========================
+   Fancy Theme Icon Button
+========================= */
+
+.navbar {
+    position: relative !important;
+    min-height: 78px;
+}
+
+/* الزر عاليسار */
+.theme-switch-fancy {
+    position: absolute;
+    left: 26px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 56px;
+    height: 56px;
+    border-radius: 20px;
+
+    border: 1px solid rgba(11, 90, 85, 0.18);
+    background: linear-gradient(145deg, #ffffff, #eaf4f2);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 !important;
+    cursor: pointer;
+    overflow: hidden;
+    z-index: 50;
+
+    box-shadow:
+        0 10px 25px rgba(11, 90, 85, 0.16),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9);
+
+    transition: all 0.25s ease-in-out;
+}
+
+/* لمعة ناعمة */
+.theme-switch-shine {
+    position: absolute;
+    top: -40%;
+    right: -35%;
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, rgba(255,255,255,0.85), transparent 65%);
+    opacity: 0.9;
+    pointer-events: none;
+}
+
+/* الأيقونة */
+.theme-switch-icon {
+    position: relative;
+    z-index: 2;
+    font-size: 25px;
+    line-height: 1;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+    transition: transform 0.25s ease-in-out;
+}
+
+/* حركة hover */
+.theme-switch-fancy:hover {
+    transform: translateY(-50%) scale(1.07);
+    box-shadow:
+        0 14px 32px rgba(11, 90, 85, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+.theme-switch-fancy:hover .theme-switch-icon {
+    transform: rotate(-12deg) scale(1.08);
+}
+
+/* لما يكون الوضع ليلي */
+.theme-switch-fancy.is-dark {
+    border-color: rgba(250, 204, 21, 0.22);
+    background: linear-gradient(145deg, #1f2937, #0f172a);
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.38),
+        0 0 20px rgba(250, 204, 21, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.theme-switch-fancy.is-dark .theme-switch-shine {
+    background: radial-gradient(circle, rgba(250,204,21,0.45), transparent 65%);
+    opacity: 0.75;
+}
+
+.theme-switch-fancy.is-dark .theme-switch-icon {
+    filter: drop-shadow(0 0 12px rgba(250, 204, 21, 0.45));
+}
+
+/* بالموبايل يصغر شوي */
+@media (max-width: 768px) {
+    .theme-switch-fancy {
+        left: 14px;
+        width: 48px;
+        height: 48px;
+        border-radius: 16px;
+    }
+
+    .theme-switch-icon {
+        font-size: 22px;
+    }
+}
+.theme-switch-fancy {
+    position: fixed !important;
+    left: 24px !important;
+    top: 24px !important;
+
+    width: 54px !important;
+    height: 54px !important;
+    border-radius: 18px !important;
+
+    background: linear-gradient(145deg, #ffffff, #eaf4f2) !important;
+    border: 1px solid rgba(11, 90, 85, 0.18) !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    padding: 0 !important;
+    z-index: 99999 !important;
+    cursor: pointer !important;
+    overflow: hidden !important;
+
+    box-shadow: 0 10px 25px rgba(11, 90, 85, 0.18) !important;
+    transition: all 0.25s ease-in-out !important;
+}
+
+.theme-switch-fancy:hover {
+    transform: scale(1.08) !important;
+}
+
+.theme-switch-icon {
+    position: relative;
+    z-index: 2;
+    font-size: 25px;
+    line-height: 1;
+}
+
+.theme-switch-shine {
+    position: absolute;
+    top: -35%;
+    right: -35%;
+    width: 75px;
+    height: 75px;
+    background: radial-gradient(circle, rgba(255,255,255,0.8), transparent 65%);
+}
+
+.theme-switch-fancy.is-dark {
+    background: linear-gradient(145deg, #1f2937, #0f172a) !important;
+    border-color: rgba(250, 204, 21, 0.25) !important;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.38) !important;
+}

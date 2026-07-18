@@ -1,34 +1,40 @@
-:root{
-    --sidebar-bg:#0b5a55;
-    --sidebar-dark:#084b46;
-    --sidebar-active:#4f9d98;
-    --sidebar-link:#e6f5f3;
+:root {
+    --sidebar-bg: #0f6b60;
+    --sidebar-dark: #07564d;
+    --sidebar-active: #2f8f83;
+    --sidebar-link: #172b2a;
 
-    --page-bg:#f5f7f8;
-    --card-bg:#ffffff;
-    --border:#edf0f2;
+    --page-bg: #f5f7f8;
+    --card-bg: #ffffff;
+    --border: #edf0f2;
 
-    --text-main:#1f2937;
-    --text-muted:#6b7280;
+    --text-main: #1f2937;
+    --text-muted: #6b7280;
 
-    --green:#39a76f;
-    --green-soft:#dff3e6;
+    --green: #39a76f;
+    --green-soft: #dff3e6;
 
-    --orange:#f3a62c;
-    --orange-soft:#fff1d8;
+    --orange: #f3a62c;
+    --orange-soft: #fff1d8;
 
-    --blue:#3f8cff;
-    --blue-soft:#dbeafe;
+    --teal: #0b7d73;
+    --teal-soft: #d9f0ec;
 
-    --teal:#0b7d73;
-    --teal-soft:#d9f0ec;
-
-    --shadow:0 4px 18px rgba(0,0,0,0.05);
-    --radius:16px;
+    --shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+    --radius: 16px;
 }
 
-/* عام */
-html, body {
+
+/* ===================================
+   Global
+=================================== */
+
+html {
+    font-size: 14px !important;
+}
+
+html,
+body {
     font-family: 'Cairo', sans-serif !important;
     background: var(--page-bg) !important;
     color: var(--text-main);
@@ -36,226 +42,688 @@ html, body {
 
 body {
     direction: rtl;
+    font-size: 14px !important;
 }
 
-.main {
+.main,
+.wrapper {
     background: var(--page-bg) !important;
 }
 
-.wrapper {
-    background: var(--page-bg);
+
+/* ===================================
+   RTL
+=================================== */
+
+.main,
+.content,
+main.content,
+.container-fluid,
+.card,
+.card-header,
+.card-body {
+    direction: rtl !important;
+    text-align: right !important;
 }
 
-/* Sidebar */
-.sidebar,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.page-title,
+.page-subtitle,
+.card-title {
+    direction: rtl !important;
+    text-align: right !important;
+}
+
+.table,
+.table th,
+.table td,
+label,
+.form-label,
+.form-control,
+.form-select,
+textarea {
+    direction: rtl !important;
+    text-align: right !important;
+}
+
+.form-control::placeholder,
+textarea::placeholder {
+    text-align: right;
+}
+
+.row,
+.d-flex.justify-content-between {
+    direction: rtl !important;
+}
+
+
+/* ===================================
+   Global Font Sizes
+=================================== */
+
+.page-title,
+main.content h1 {
+    font-size: 26px !important;
+    font-weight: 800 !important;
+}
+
+.page-subtitle {
+    font-size: 13px !important;
+}
+
+h2 {
+    font-size: 23px !important;
+}
+
+h3 {
+    font-size: 20px !important;
+}
+
+h4 {
+    font-size: 18px !important;
+}
+
+h5,
+.card-title,
+.card-header h5 {
+    font-size: 16px !important;
+}
+
+h6 {
+    font-size: 14px !important;
+}
+
+p,
+label,
+.form-label {
+    font-size: 13px;
+}
+
+small,
+.text-muted {
+    font-size: 11.5px !important;
+}
+
+
+/* ===================================
+   Sidebar
+=================================== */
+
+.sidebar {
+    background: linear-gradient(
+        180deg,
+        var(--sidebar-bg) 0%,
+        var(--sidebar-dark) 100%
+    ) !important;
+
+    border-left: none !important;
+}
+
 .sidebar-content {
-    background: linear-gradient(180deg, var(--sidebar-bg), var(--sidebar-dark)) !important;
-}
-
-.sidebar-brand {
     background: transparent !important;
-    color: #fff !important;
-    font-size: 1.8rem;
-    font-weight: 800;
-    padding-top: 1.6rem;
-    padding-bottom: .7rem;
-    text-align: center;
+    padding: 18px 14px;
 }
 
-.sidebar-brand:hover {
-    color: #fff !important;
-}
 
-.brand-subtitle {
-    display: block;
-    font-size: .95rem;
-    font-weight: 600;
-    margin-top: .15rem;
-    color: rgba(255,255,255,.9);
-}
+/* Smart City Brand */
 
-.sidebar-header {
-    color: rgba(255,255,255,.8) !important;
-    font-size: .95rem;
-    font-weight: 700;
-    margin-top: .9rem;
-    margin-bottom: .6rem;
-}
+.sidebar .brand-logo {
+    width: 100% !important;
+    max-width: none !important;
+    box-sizing: border-box !important;
 
-.sidebar-item {
-    margin: .3rem .9rem;
-}
+    margin: 0 0 26px !important;
+    padding: 16px 14px;
 
-.sidebar-link {
-    color: var(--sidebar-link) !important;
-    padding: .95rem 1rem;
-    border-radius: 12px;
-    font-size: 1rem;
-    font-weight: 700;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 22px;
+
+    background: rgba(255, 255, 255, 0.13) !important;
+
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
+
+    color: inherit !important;
+    text-decoration: none;
+
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.14);
+    backdrop-filter: blur(8px);
 }
 
-.sidebar-link i,
-.sidebar-link svg {
-    width: 18px;
-    height: 18px;
+.sidebar .brand-logo:hover {
+    background: rgba(255, 255, 255, 0.18) !important;
+    color: inherit !important;
+    text-decoration: none;
+}
+
+
+/* Smart City Icon */
+
+.sidebar .brand-mark {
+    width: 52px;
+    height: 52px;
+
+    border-radius: 17px;
+
+    background: linear-gradient(
+        135deg,
+        #ffffff,
+        #e8f6f2
+    );
+
+    color: #167063;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
+}
+
+.sidebar .brand-mark.city-logo svg {
+    width: 36px;
+    height: 36px;
+
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+
+/* Smart City Text */
+
+.sidebar .brand-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    line-height: 1.3;
+}
+
+.sidebar .brand-title {
+    color: #ffffff !important;
+
+    font-size: 20px !important;
+    font-weight: 900;
+
+    letter-spacing: 0.5px;
+}
+
+.sidebar .brand-subtitle {
+    margin-top: 3px;
+
+    color: rgba(255, 255, 255, 0.78) !important;
+
+    font-size: 11px !important;
+    font-weight: 700;
+}
+
+
+/* Sidebar Headers */
+
+.sidebar .sidebar-header {
+    padding: 14px 10px 8px;
+
+    color: rgba(255, 255, 255, 0.78) !important;
+
+    font-size: 11px !important;
+    font-weight: 800;
+
+    text-align: right;
+}
+
+
+/* Sidebar Items */
+
+.sidebar .sidebar-item {
+    width: 100% !important;
+    margin: 0 !important;
+}
+
+
+/* Sidebar Links */
+
+.sidebar .sidebar-link {
+    width: 100% !important;
+    box-sizing: border-box !important;
+
+    margin: 7px 0;
+    padding: 13px 14px;
+
+    border: none !important;
+    border-radius: 16px;
+
+    background: #ffffff !important;
     color: var(--sidebar-link) !important;
+
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+
+    gap: 11px !important;
+
+    direction: rtl !important;
+    text-align: right !important;
+
+    font-size: 14px !important;
+    font-weight: 800;
+
+    box-shadow: 0 7px 18px rgba(0, 0, 0, 0.08);
+
+    transition: all 0.22s ease !important;
 }
 
-.sidebar-link:hover {
-    background: rgba(255,255,255,.09) !important;
-    color: #fff !important;
+
+/* Sidebar Text */
+
+.sidebar .sidebar-link span {
+    order: 1 !important;
+
+    flex: 1;
+
+    text-align: right;
+
+    font-size: 14px !important;
+    font-weight: 800;
 }
 
-.sidebar-item.active .sidebar-link {
-    background: rgba(111, 201, 194, .45) !important;
-    color: #fff !important;
-    box-shadow: inset 0 0 0 1px rgba(255,255,255,.08);
+
+/* Sidebar Icons */
+
+.sidebar .sidebar-link i,
+.sidebar .sidebar-link svg {
+    order: 0 !important;
+
+    width: 19px;
+    height: 19px;
+
+    margin: 0 !important;
+
+    color: #167063 !important;
+
+    flex-shrink: 0;
 }
 
-.sidebar-item.active .sidebar-link i,
-.sidebar-item.active .sidebar-link svg {
-    color: #fff !important;
+
+/* Hover + Current Active Page */
+
+.sidebar .sidebar-item.active .sidebar-link,
+.sidebar .sidebar-link:hover,
+.sidebar .sidebar-link:focus,
+.sidebar .sidebar-item.active .sidebar-link:hover {
+    background: var(--sidebar-active) !important;
+    color: #ffffff !important;
+
+    transform: translateX(-3px);
+
+    box-shadow:
+        0 10px 22px
+        rgba(47, 143, 131, 0.28) !important;
 }
+
+
+/* Active + Hover Icons */
+
+.sidebar .sidebar-item.active .sidebar-link i,
+.sidebar .sidebar-item.active .sidebar-link svg,
+.sidebar .sidebar-link:hover i,
+.sidebar .sidebar-link:hover svg,
+.sidebar .sidebar-link:focus i,
+.sidebar .sidebar-link:focus svg {
+    color: #ffffff !important;
+}
+
+
+/* Remove AdminKit Active Line */
+
+.sidebar .sidebar-item.active .sidebar-link::before,
+.sidebar .sidebar-link::before {
+    display: none !important;
+    content: none !important;
+}
+
+
+/* Hide Sidebar Toggle */
+
+.sidebar-toggle,
+.js-sidebar-toggle {
+    display: none !important;
+}
+
+
+/* Logout Button */
 
 .sidebar .btn-logout {
-    background: rgba(255,255,255,.08);
-    color: #fff;
+    width: calc(100% - 30px);
+
+    margin: 20px 15px;
+    padding: 12px 14px;
+
     border: 0;
     border-radius: 12px;
-    padding: 12px 14px;
-    width: calc(100% - 30px);
-    margin: 20px 15px;
+
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+
     font-weight: 700;
     text-align: center;
 }
 
 .sidebar .btn-logout:hover {
-    background: rgba(255,255,255,.15);
-    color: #fff;
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
 }
 
-/* Navbar */
+
+/* ===================================
+   Navbar
+=================================== */
+
 .navbar {
-    background: #fff !important;
+    position: relative !important;
+
+    min-height: 78px;
+
+    background: #ffffff !important;
+
     border-bottom: 1px solid var(--border);
-    box-shadow: 0 1px 8px rgba(0,0,0,0.03);
+
+    box-shadow:
+        0 1px 8px
+        rgba(0, 0, 0, 0.03);
 }
 
 .navbar .form-control {
+    min-width: 250px;
+    height: 44px;
+
     border: 1px solid #e5e7eb !important;
     border-radius: 12px !important;
-    height: 44px;
-    min-width: 250px;
 }
 
 .navbar .input-group-text {
-    background: #fff;
+    background: #ffffff;
+
     border: 1px solid #e5e7eb;
     border-right: 0;
+
     border-radius: 12px 0 0 12px;
 }
+
+
+/* Top User */
 
 .top-user {
     display: flex;
     align-items: center;
+
     gap: 10px;
 }
 
 .top-user img {
     width: 40px;
     height: 40px;
+
     border-radius: 50%;
 }
 
 .top-user .name {
-    font-weight: 800;
-    color: var(--text-main);
     margin-bottom: 0;
+
+    color: var(--text-main);
+
+    font-size: 13px !important;
+    font-weight: 800;
+
     line-height: 1.1;
 }
 
 .top-user .role {
-    font-size: .85rem;
-    color: var(--text-muted);
     margin-bottom: 0;
+
+    color: var(--text-muted);
+
+    font-size: 11px !important;
 }
 
-/* المحتوى */
+
+/* ===================================
+   Theme Toggle
+=================================== */
+
+.theme-switch-fancy {
+    position: fixed !important;
+
+    top: 24px !important;
+    left: 24px !important;
+
+    z-index: 99999 !important;
+
+    width: 54px !important;
+    height: 54px !important;
+
+    padding: 0 !important;
+
+    overflow: hidden !important;
+
+    border:
+        1px solid
+        rgba(11, 90, 85, 0.18) !important;
+
+    border-radius: 18px !important;
+
+    background:
+        linear-gradient(
+            145deg,
+            #ffffff,
+            #eaf4f2
+        ) !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    cursor: pointer !important;
+
+    box-shadow:
+        0 10px 25px
+        rgba(11, 90, 85, 0.18) !important;
+
+    transition:
+        all 0.25s ease-in-out !important;
+}
+
+.theme-switch-fancy:hover {
+    transform: scale(1.08) !important;
+}
+
+.theme-switch-shine {
+    position: absolute;
+
+    top: -35%;
+    right: -35%;
+
+    width: 75px;
+    height: 75px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.8),
+            transparent 65%
+        );
+
+    pointer-events: none;
+}
+
+.theme-switch-icon {
+    position: relative;
+
+    z-index: 2;
+
+    font-size: 25px;
+    line-height: 1;
+
+    filter:
+        drop-shadow(
+            0 4px 8px
+            rgba(0, 0, 0, 0.15)
+        );
+
+    transition:
+        transform 0.25s ease-in-out;
+}
+
+.theme-switch-fancy:hover .theme-switch-icon {
+    transform:
+        rotate(-12deg)
+        scale(1.08);
+}
+
+.theme-switch-fancy.is-dark {
+    background:
+        linear-gradient(
+            145deg,
+            #1f2937,
+            #0f172a
+        ) !important;
+
+    border-color:
+        rgba(250, 204, 21, 0.25) !important;
+
+    box-shadow:
+        0 12px 30px
+        rgba(0, 0, 0, 0.38) !important;
+}
+
+.theme-switch-fancy.is-dark .theme-switch-shine {
+    background:
+        radial-gradient(
+            circle,
+            rgba(250, 204, 21, 0.45),
+            transparent 65%
+        );
+
+    opacity: 0.75;
+}
+
+.theme-switch-fancy.is-dark .theme-switch-icon {
+    filter:
+        drop-shadow(
+            0 0 12px
+            rgba(250, 204, 21, 0.45)
+        );
+}
+
+
+/* ===================================
+   Content
+=================================== */
+
 .content {
     padding: 1.5rem 1.5rem 1rem;
 }
 
-.page-title {
-    font-size: 2rem;
-    font-weight: 800;
-    margin-bottom: .25rem;
-}
 
-.page-subtitle {
-    color: var(--text-muted);
-    font-size: 1rem;
-    margin-bottom: 0;
-}
+/* ===================================
+   Cards
+=================================== */
 
-/* Cards */
 .card {
     border: 0 !important;
-    background: var(--card-bg) !important;
-    border-radius: var(--radius) !important;
-    box-shadow: var(--shadow) !important;
+
+    border-radius:
+        var(--radius) !important;
+
+    background:
+        var(--card-bg) !important;
+
+    box-shadow:
+        var(--shadow) !important;
 }
 
 .card-header {
-    background: transparent !important;
-    border-bottom: 1px solid var(--border) !important;
     padding: 1rem 1.25rem !important;
+
+    background: transparent !important;
+
+    border-bottom:
+        1px solid
+        var(--border) !important;
 }
 
 .card-title {
-    font-size: 1.35rem;
-    font-weight: 800;
     margin-bottom: 0;
+    font-weight: 800;
 }
 
 .card-body {
     padding: 1.25rem;
 }
 
-/* Stats cards */
+
+/* ===================================
+   Statistics Cards
+=================================== */
+
 .stat-card {
     border-radius: 18px !important;
 }
 
-.stat-number {
-    font-size: 2.2rem;
-    line-height: 1;
-    font-weight: 800;
-    color: #1f2937;
+.stat-number,
+.stat-card .stat-number,
+.stat-card .card-body .stat-number,
+.users-page .stat-number,
+.reports-page .stat-number,
+.map-page .stat-number,
+.report-types-page .stat-number {
+    color: var(--text-main);
+
+    font-size: 20px !important;
+    line-height: 1.25 !important;
+    font-weight: 800 !important;
 }
 
-.stat-title {
-    font-size: 1.15rem;
+.stat-title,
+.stat-card .stat-title {
+    margin-bottom: 0.55rem;
+
+    font-size: 12.5px !important;
     font-weight: 800;
-    margin-bottom: .55rem;
 }
 
-.stat-desc {
-    color: var(--text-muted);
-    font-size: .95rem;
+.stat-desc,
+.stat-card .stat-desc {
+    margin-top: 3px !important;
     margin-bottom: 0;
+
+    color: var(--text-muted);
+
+    font-size: 10.5px !important;
 }
 
 .stat-icon {
     width: 72px;
     height: 72px;
+
+    margin-inline-start: auto;
+
     border-radius: 50%;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-inline-start: auto;
 }
 
 .stat-icon svg,
@@ -264,38 +732,78 @@ body {
     height: 28px;
 }
 
-.stat-total { background: var(--teal-soft); color: var(--teal); }
-.stat-new { background: var(--teal-soft); color: #11857a; }
-.stat-progress { background: var(--orange-soft); color: var(--orange); }
-.stat-done { background: var(--green-soft); color: var(--green); }
+.stat-total {
+    background: var(--teal-soft);
+    color: var(--teal);
+}
 
-/* Table */
+.stat-new {
+    background: var(--teal-soft);
+    color: #11857a;
+}
+
+.stat-progress {
+    background: var(--orange-soft);
+    color: var(--orange);
+}
+
+.stat-done {
+    background: var(--green-soft);
+    color: var(--green);
+}
+
+
+/* ===================================
+   Tables
+=================================== */
+
 .table {
     margin-bottom: 0;
+
     vertical-align: middle;
+
+    font-size: 13px !important;
 }
 
 .table thead th {
-    border-bottom: 1px solid var(--border) !important;
-    color: #374151;
-    font-weight: 800;
     background: #f8fafb !important;
+
+    border-bottom:
+        1px solid
+        var(--border) !important;
+
+    color: #374151;
+
+    font-size: 13px !important;
+    font-weight: 800;
 }
 
-.table td, .table th {
-    padding: 1rem .85rem;
+.table td,
+.table th {
+    padding: 1rem 0.85rem;
+
     border-color: var(--border);
+}
+
+.table td {
+    font-size: 12.5px !important;
 }
 
 .table-hover tbody tr:hover {
     background: #fafcfc;
 }
 
-/* Badges */
+
+/* ===================================
+   Badges
+=================================== */
+
 .badge {
+    padding: 0.5rem 0.7rem;
+
     border-radius: 10px;
-    padding: .5rem .7rem;
-    font-size: .82rem;
+
+    font-size: 11px !important;
     font-weight: 700;
 }
 
@@ -305,25 +813,36 @@ body {
 
 .bg-warning {
     background-color: #f2a72a !important;
-    color: #fff !important;
+    color: #ffffff !important;
 }
 
 .bg-success {
     background-color: #42a85f !important;
 }
 
-/* Buttons */
+
+/* ===================================
+   Buttons
+=================================== */
+
 .btn {
+    padding: 0.65rem 1rem !important;
+
     border-radius: 12px !important;
+
+    font-size: 13px !important;
     font-weight: 700 !important;
-    padding: .65rem 1rem !important;
+}
+
+.btn-sm {
+    font-size: 12px !important;
 }
 
 .btn-primary,
 .btn-success {
     background: #4b8e88 !important;
     border-color: #4b8e88 !important;
-    color: #fff !important;
+    color: #ffffff !important;
 }
 
 .btn-primary:hover,
@@ -339,86 +858,176 @@ body {
 
 .btn-outline-primary:hover {
     background: #4b8e88 !important;
-    color: #fff !important;
+    color: #ffffff !important;
 }
 
-/* Dashboard map */
+
+/* ===================================
+   Forms
+=================================== */
+
+.form-control,
+.form-select {
+    min-height: 46px;
+
+    border:
+        1px solid
+        #e5e7eb !important;
+
+    border-radius: 12px !important;
+
+    font-size: 13px !important;
+}
+
+textarea,
+textarea.form-control {
+    font-size: 13px !important;
+}
+
+textarea.form-control {
+    min-height: 120px;
+}
+
+
+/* ===================================
+   Dashboard Map
+=================================== */
+
 .dashboard-map {
-    height: 280px;
-    background: url('/admin/img/map-placeholder.png') center/cover no-repeat, #ecf2ef;
-    border-radius: 14px;
     position: relative;
+
+    height: 280px;
+
     overflow: hidden;
-    border: 1px solid var(--border);
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 14px;
+
+    background:
+        url('/admin/img/map-placeholder.png')
+        center / cover
+        no-repeat,
+        #ecf2ef;
 }
 
 .map-pin {
     position: absolute;
+
     width: 22px;
     height: 22px;
+
     border-radius: 50% 50% 50% 0;
+
     transform: rotate(-45deg);
-    box-shadow: 0 4px 10px rgba(0,0,0,.18);
+
+    box-shadow:
+        0 4px 10px
+        rgba(0, 0, 0, 0.18);
 }
 
 .map-pin::after {
     content: '';
+
     position: absolute;
-    width: 8px;
-    height: 8px;
-    background: #fff;
-    border-radius: 50%;
+
     top: 7px;
     left: 7px;
+
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #ffffff;
 }
 
-.pin-red { background:#ef4444; }
-.pin-orange { background:#f59e0b; }
-.pin-purple { background:#8b5cf6; }
-.pin-blue { background:#3b82f6; }
-.pin-green { background:#22c55e; }
+.pin-red {
+    background: #ef4444;
+}
+
+.pin-orange {
+    background: #f59e0b;
+}
+
+.pin-purple {
+    background: #8b5cf6;
+}
+
+.pin-blue {
+    background: #3b82f6;
+}
+
+.pin-green {
+    background: #22c55e;
+}
 
 .map-legend {
+    margin-top: 14px;
+
     display: flex;
     justify-content: center;
+
     gap: 30px;
-    margin-top: 14px;
-    font-weight: 700;
+
     color: var(--text-muted);
-    font-size: .95rem;
+
+    font-size: 0.95rem;
+    font-weight: 700;
 }
 
 .map-legend .box {
     width: 11px;
     height: 11px;
-    display: inline-block;
-    border-radius: 2px;
+
     margin-left: 6px;
+
+    border-radius: 2px;
+
+    display: inline-block;
 }
 
-/* Quick actions */
+
+/* ===================================
+   Quick Actions
+=================================== */
+
 .quick-actions-title {
+    margin-bottom: 1rem;
+
     font-size: 1.8rem;
     font-weight: 800;
-    margin-bottom: 1rem;
 }
 
 .quick-action {
-    background: #fff;
-    border-radius: 16px;
-    border: 1px solid var(--border);
-    box-shadow: var(--shadow);
     min-height: 125px;
+
+    border:
+        1px solid
+        var(--border);
+
+    border-radius: 16px;
+
+    background: #ffffff;
+
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+
     gap: 10px;
-    transition: .2s;
+
+    box-shadow:
+        var(--shadow);
+
+    transition: 0.2s;
 }
 
 .quick-action:hover {
     transform: translateY(-3px);
+
     border-color: #cde4df;
 }
 
@@ -426,196 +1035,104 @@ body {
 .quick-action i {
     width: 24px;
     height: 24px;
+
     color: #2f7e77;
 }
 
 .quick-action span {
     color: var(--text-main);
-    font-weight: 800;
+
     font-size: 1rem;
+    font-weight: 800;
 }
 
-/* forms عامة */
-.form-control,
-.form-select {
-    border-radius: 12px !important;
-    border: 1px solid #e5e7eb !important;
-    min-height: 46px;
-}
 
-textarea.form-control {
-    min-height: 120px;
-}
+/* ===================================
+   Dark Mode
+=================================== */
 
-/* responsive */
-@media (max-width: 991px) {
-    .page-title {
-        font-size: 1.5rem;
-    }
-
-    .stat-number {
-        font-size: 1.8rem;
-    }
-}
-/* جعل كل محتوى الصفحات عربي من اليمين */
-.main,
-.content,
-main.content,
-.container-fluid,
-.card,
-.card-header,
-.card-body {
-    direction: rtl !important;
-    text-align: right !important;
-}
-
-/* كل العناوين تبدأ من اليمين */
-h1, h2, h3, h4, h5, h6,
-.page-title,
-.page-subtitle,
-.card-title {
-    text-align: right !important;
-    direction: rtl !important;
-}
-
-/* الجداول من اليمين */
-.table,
-.table th,
-.table td {
-    text-align: right !important;
-    direction: rtl !important;
-}
-
-/* الفورمات والليبلات */
-label,
-.form-label,
-.form-control,
-.form-select,
-textarea {
-    text-align: right !important;
-    direction: rtl !important;
-}
-
-/* placeholder تبع البحث كمان من اليمين */
-.form-control::placeholder {
-    text-align: right;
-}
-
-/* ترتيب الصفوف يبدأ من اليمين */
-.row {
-    direction: rtl !important;
-}
-
-/* لما يكون في عنوان وزر بنفس السطر */
-.d-flex.justify-content-between {
-    direction: rtl !important;
-}
-/* ترتيب أيقونات السايدبار لتكون على يمين النص */
-.sidebar-link {
-    display: flex !important;
-    flex-direction: row !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    direction: rtl !important;
-    text-align: right !important;
-    gap: 12px !important;
-}
-
-.sidebar-link i,
-.sidebar-link svg {
-    order: 0 !important;
-    margin: 0 !important;
-    flex-shrink: 0;
-}
-
-.sidebar-link span {
-    order: 1 !important;
-}
-/* إخفاء أيقونة فتح/إغلاق السايدبار */
-.sidebar-toggle,
-.js-sidebar-toggle {
-    display: none !important;
-}
-/* =========================
-   Light / Dark Mode
-========================= */
-
-.theme-toggle-btn {
-    background: #eef5f4 !important;
-    color: #0b5a55 !important;
-    border: 1px solid #d7e8e5 !important;
-    border-radius: 14px !important;
-    font-weight: 800 !important;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.theme-toggle-btn:hover {
-    background: #dff0ed !important;
-    color: #084b46 !important;
-}
-
-/* الوضع الليلي */
 body.dark-mode {
-    background: #0f172a !important;
-    color: #e5e7eb !important;
-
     --page-bg: #0f172a;
     --card-bg: #111827;
     --border: #263244;
     --text-main: #e5e7eb;
     --text-muted: #9ca3af;
+
+    background:
+        var(--page-bg) !important;
+
+    color:
+        var(--text-main) !important;
 }
 
-/* الخلفية العامة */
 body.dark-mode .main,
 body.dark-mode .content,
 body.dark-mode main.content,
 body.dark-mode .wrapper {
-    background: #0f172a !important;
-    color: #e5e7eb !important;
+    background:
+        var(--page-bg) !important;
+
+    color:
+        var(--text-main) !important;
 }
 
-/* النافبار */
+
+/* Dark Navbar */
+
 body.dark-mode .navbar {
     background: #111827 !important;
-    border-bottom: 1px solid #263244 !important;
+
+    border-bottom-color:
+        var(--border) !important;
 }
 
 body.dark-mode .top-user .name {
-    color: #e5e7eb !important;
+    color:
+        var(--text-main) !important;
 }
 
-body.dark-mode .top-user .role {
-    color: #9ca3af !important;
+body.dark-mode .top-user .role,
+body.dark-mode .text-muted,
+body.dark-mode .page-subtitle,
+body.dark-mode .stat-desc,
+body.dark-mode .info-label,
+body.dark-mode .timeline-date,
+body.dark-mode .report-location-meta {
+    color:
+        var(--text-muted) !important;
 }
 
-/* زر تبديل الوضع داخل الليلي */
-body.dark-mode .theme-toggle-btn {
-    background: #1f2937 !important;
-    color: #facc15 !important;
-    border-color: #334155 !important;
+
+/* Dark Cards */
+
+body.dark-mode .card,
+body.dark-mode .card-header,
+body.dark-mode .card-body {
+    background:
+        var(--card-bg) !important;
+
+    color:
+        var(--text-main) !important;
 }
 
-/* الكروت */
 body.dark-mode .card {
-    background: #111827 !important;
-    color: #e5e7eb !important;
-    border: 1px solid #263244 !important;
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35) !important;
+    border:
+        1px solid
+        var(--border) !important;
+
+    box-shadow:
+        0 4px 18px
+        rgba(0, 0, 0, 0.35) !important;
 }
 
 body.dark-mode .card-header {
-    background: #111827 !important;
-    border-bottom: 1px solid #263244 !important;
+    border-bottom-color:
+        var(--border) !important;
 }
 
-body.dark-mode .card-body {
-    background: #111827 !important;
-}
 
-/* العناوين */
+/* Dark Titles */
+
 body.dark-mode h1,
 body.dark-mode h2,
 body.dark-mode h3,
@@ -629,443 +1146,963 @@ body.dark-mode .stat-title,
 body.dark-mode .info-value,
 body.dark-mode .timeline-title,
 body.dark-mode .report-location-title {
-    color: #e5e7eb !important;
+    color:
+        var(--text-main) !important;
 }
 
-body.dark-mode .text-muted,
-body.dark-mode .page-subtitle,
-body.dark-mode .stat-desc,
-body.dark-mode .info-label,
-body.dark-mode .timeline-date,
-body.dark-mode .report-location-meta {
-    color: #9ca3af !important;
-}
 
-/* الجداول */
+/* Dark Tables */
+
 body.dark-mode .table {
-    color: #e5e7eb !important;
+    color:
+        var(--text-main) !important;
 }
 
 body.dark-mode .table thead th {
     background: #172033 !important;
-    color: #e5e7eb !important;
-    border-color: #263244 !important;
+
+    color:
+        var(--text-main) !important;
+
+    border-color:
+        var(--border) !important;
 }
 
 body.dark-mode .table td,
 body.dark-mode .table th {
-    border-color: #263244 !important;
+    border-color:
+        var(--border) !important;
 }
 
 body.dark-mode .table-hover tbody tr:hover {
     background: #1f2937 !important;
 }
 
-/* الفورمات */
+
+/* Dark Forms */
+
 body.dark-mode .form-control,
 body.dark-mode .form-select,
 body.dark-mode textarea {
     background: #0b1220 !important;
-    color: #e5e7eb !important;
-    border-color: #334155 !important;
+
+    color:
+        var(--text-main) !important;
+
+    border-color:
+        #334155 !important;
 }
 
 body.dark-mode .form-control::placeholder,
 body.dark-mode textarea::placeholder {
-    color: #94a3b8 !important;
+    color:
+        #94a3b8 !important;
 }
 
-/* الأزرار الفاتحة */
+
+/* Dark Buttons */
+
 body.dark-mode .btn-light {
     background: #1f2937 !important;
-    color: #e5e7eb !important;
-    border-color: #334155 !important;
+
+    color:
+        var(--text-main) !important;
+
+    border-color:
+        #334155 !important;
 }
 
-/* خلفيات بيضاء قديمة */
 body.dark-mode .bg-white {
-    background-color: #111827 !important;
+    background-color:
+        var(--card-bg) !important;
 }
 
-/* الخريطة والصناديق */
+
+/* Dark Maps */
+
 body.dark-mode .dashboard-map,
 body.dark-mode .report-map-box,
 body.dark-mode .map-box,
 body.dark-mode .main-map {
     background:
-        linear-gradient(135deg, rgba(15, 23, 42, .92), rgba(30, 41, 59, .92)),
-        repeating-linear-gradient(0deg, transparent 0 38px, rgba(75,142,136,.12) 39px),
-        repeating-linear-gradient(90deg, transparent 0 38px, rgba(75,142,136,.12) 39px) !important;
-    border-color: #334155 !important;
+        linear-gradient(
+            135deg,
+            rgba(15, 23, 42, 0.92),
+            rgba(30, 41, 59, 0.92)
+        ),
+        repeating-linear-gradient(
+            0deg,
+            transparent 0 38px,
+            rgba(75, 142, 136, 0.12) 39px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent 0 38px,
+            rgba(75, 142, 136, 0.12) 39px
+        ) !important;
+
+    border-color:
+        #334155 !important;
 }
 
-/* عناصر داخل صفحات البلاغات */
+
+/* Dark Page Elements */
+
 body.dark-mode .image-placeholder,
 body.dark-mode .status-box,
 body.dark-mode .report-location-item,
 body.dark-mode .quick-action {
-    background: #0b1220 !important;
-    border-color: #334155 !important;
-    color: #e5e7eb !important;
+    background:
+        #0b1220 !important;
+
+    border-color:
+        #334155 !important;
+
+    color:
+        var(--text-main) !important;
 }
 
-/* لابل الخريطة */
 body.dark-mode .map-label {
-    background: #111827 !important;
-    color: #e5e7eb !important;
-    border-color: #334155 !important;
+    background:
+        #111827 !important;
+
+    color:
+        var(--text-main) !important;
+
+    border-color:
+        #334155 !important;
 }
 
-/* التنبيهات */
+
+/* Dark Alerts */
+
 body.dark-mode .alert-success {
-    background: #12352f !important;
-    color: #d1fae5 !important;
-    border-color: #245a50 !important;
+    background:
+        #12352f !important;
+
+    color:
+        #d1fae5 !important;
+
+    border-color:
+        #245a50 !important;
 }
 
 body.dark-mode .alert-warning {
-    background: #3b2f12 !important;
-    color: #fde68a !important;
-    border-color: #785f1d !important;
+    background:
+        #3b2f12 !important;
+
+    color:
+        #fde68a !important;
+
+    border-color:
+        #785f1d !important;
 }
 
-/* Dropdown */
+
+/* Dark Dropdown */
+
 body.dark-mode .dropdown-menu {
-    background: #111827 !important;
-    border-color: #334155 !important;
+    background:
+        #111827 !important;
+
+    border-color:
+        #334155 !important;
 }
 
 body.dark-mode .dropdown-item {
-    color: #e5e7eb !important;
+    color:
+        var(--text-main) !important;
 }
 
 body.dark-mode .dropdown-item:hover {
-    background: #1f2937 !important;
+    background:
+        #1f2937 !important;
 }
 
-/* Progress */
+
+/* Dark Progress */
+
 body.dark-mode .progress {
-    background: #263244 !important;
+    background:
+        #263244 !important;
 }
-/* =========================
-   Fancy Theme Icon Button
-========================= */
 
-.navbar {
+/* ===================================
+   Dark Sidebar
+=================================== */
+
+body.dark-mode .sidebar {
+    background: linear-gradient(
+        180deg,
+        #111827 0%,
+        #0b1220 100%
+    ) !important;
+
+    border-left: 1px solid #263244 !important;
+}
+
+body.dark-mode .sidebar-content {
+    background: transparent !important;
+}
+
+
+/* عنوان Smart City بالوضع الليلي */
+body.dark-mode .sidebar .brand-logo {
+    background: rgba(255, 255, 255, 0.06) !important;
+
+    border-color:
+        rgba(255, 255, 255, 0.10) !important;
+
+    box-shadow:
+        0 14px 30px
+        rgba(0, 0, 0, 0.28) !important;
+}
+
+body.dark-mode .sidebar .brand-logo:hover {
+    background:
+        rgba(255, 255, 255, 0.09) !important;
+}
+
+
+/* أيقونة المدينة */
+body.dark-mode .sidebar .brand-mark {
+    background:
+        linear-gradient(
+            135deg,
+            #1f2937,
+            #263244
+        ) !important;
+
+    color: #5fc0b3 !important;
+
+    box-shadow:
+        0 10px 22px
+        rgba(0, 0, 0, 0.35) !important;
+}
+
+
+/* اسم المشروع */
+body.dark-mode .sidebar .brand-title {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .sidebar .brand-subtitle {
+    color:
+        rgba(229, 231, 235, 0.72) !important;
+}
+
+
+/* عناوين الأقسام */
+body.dark-mode .sidebar .sidebar-header {
+    color:
+        rgba(229, 231, 235, 0.65) !important;
+}
+
+
+/* أزرار السايدبار بالوضع الليلي */
+body.dark-mode .sidebar .sidebar-link {
+    background: #172033 !important;
+    color: #e5e7eb !important;
+
+    box-shadow:
+        0 7px 18px
+        rgba(0, 0, 0, 0.18) !important;
+}
+
+
+/* الأيقونات */
+body.dark-mode .sidebar .sidebar-link i,
+body.dark-mode .sidebar .sidebar-link svg {
+    color: #5fc0b3 !important;
+}
+
+
+/* Hover + التبويبة الحالية */
+body.dark-mode .sidebar .sidebar-item.active .sidebar-link,
+body.dark-mode .sidebar .sidebar-link:hover,
+body.dark-mode .sidebar .sidebar-link:focus,
+body.dark-mode .sidebar .sidebar-item.active .sidebar-link:hover {
+    background: #245f58 !important;
+    color: #ffffff !important;
+
+    transform: translateX(-3px);
+
+    box-shadow:
+        0 10px 22px
+        rgba(0, 0, 0, 0.30) !important;
+}
+
+
+/* أيقونة الصفحة الحالية والهوفر */
+body.dark-mode .sidebar .sidebar-item.active .sidebar-link i,
+body.dark-mode .sidebar .sidebar-item.active .sidebar-link svg,
+body.dark-mode .sidebar .sidebar-link:hover i,
+body.dark-mode .sidebar .sidebar-link:hover svg,
+body.dark-mode .sidebar .sidebar-link:focus i,
+body.dark-mode .sidebar .sidebar-link:focus svg {
+    color: #ffffff !important;
+}
+
+/* ===================================
+   Authentication Pages - Final
+=================================== */
+
+/* تصغير الخطوط بقوة حتى تتغلب على CSS داخل auth.blade.php */
+
+body .auth-page .auth-logo-title {
+    font-size: 17px !important;
+}
+
+body .auth-page .auth-logo-subtitle {
+    font-size: 9px !important;
+}
+
+body .auth-page .auth-brand-content h1 {
+    font-size: 23px !important;
+    line-height: 1.5 !important;
+}
+
+body .auth-page .auth-brand-content p {
+    font-size: 11px !important;
+    line-height: 1.9 !important;
+}
+
+body .auth-page .auth-feature {
+    font-size: 10.5px !important;
+}
+
+body .auth-page .auth-form-header h2 {
+    font-size: 20px !important;
+}
+
+body .auth-page .auth-form-header p {
+    font-size: 11px !important;
+}
+
+body .auth-page .auth-field label {
+    font-size: 11px !important;
+}
+
+body .auth-page .auth-input {
+    font-size: 11.5px !important;
+}
+
+body .auth-page .auth-submit {
+    font-size: 12px !important;
+}
+
+body .auth-page .auth-bottom-link,
+body .auth-page .auth-bottom-link a {
+    font-size: 11px !important;
+}
+
+
+/* ===================================
+   Authentication Dark Mode - Final
+=================================== */
+
+/* خلفية الصفحة كلها */
+body.dark-mode,
+body.dark-mode .auth-page {
+    background:
+        linear-gradient(
+            135deg,
+            #0b1220 0%,
+            #0f172a 50%,
+            #111827 100%
+        ) !important;
+
+    color: #e5e7eb !important;
+}
+
+
+/* الحاوية الرئيسية كلها */
+body.dark-mode .auth-page .auth-wrapper {
+    background: #111827 !important;
+
+    box-shadow:
+        0 25px 70px
+        rgba(0, 0, 0, 0.50) !important;
+}
+
+
+/* الطرف الخاص بالشعار يصير ليلي أيضاً */
+body.dark-mode .auth-page .auth-brand-side {
+    background:
+        linear-gradient(
+            160deg,
+            #172033 0%,
+            #111827 55%,
+            #0b1220 100%
+        ) !important;
+
+    color: #e5e7eb !important;
+}
+
+
+/* الدوائر الزخرفية */
+body.dark-mode .auth-page .auth-brand-side::before,
+body.dark-mode .auth-page .auth-brand-side::after {
+    background:
+        rgba(95, 192, 179, 0.06) !important;
+}
+
+
+/* جهة الفورم */
+body.dark-mode .auth-page .auth-form-side {
+    background: #111827 !important;
+}
+
+
+/* الشعار */
+body.dark-mode .auth-page .auth-logo-icon {
+    background:
+        linear-gradient(
+            135deg,
+            #1f2937,
+            #263244
+        ) !important;
+
+    color: #5fc0b3 !important;
+
+    box-shadow:
+        0 12px 26px
+        rgba(0, 0, 0, 0.35) !important;
+}
+
+body.dark-mode .auth-page .auth-logo-title {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .auth-page .auth-logo-subtitle {
+    color:
+        rgba(229, 231, 235, 0.72) !important;
+}
+
+
+/* نص الجهة الجانبية */
+body.dark-mode .auth-page .auth-brand-content h1 {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .auth-page .auth-brand-content p {
+    color: #9ca3af !important;
+}
+
+body.dark-mode .auth-page .auth-feature {
+    color: #d1d5db !important;
+}
+
+body.dark-mode .auth-page .auth-feature-icon {
+    background:
+        rgba(95, 192, 179, 0.12) !important;
+
+    color: #ffffff !important;
+}
+
+
+/* عنوان الفورم */
+body.dark-mode .auth-page .auth-form-header h2 {
+    color: #f3f4f6 !important;
+}
+
+body.dark-mode .auth-page .auth-form-header p {
+    color: #9ca3af !important;
+}
+
+
+/* أسماء الحقول */
+body.dark-mode .auth-page .auth-field label,
+body.dark-mode .auth-page .auth-form-side label {
+    color: #d1d5db !important;
+}
+
+
+/* الحقول */
+body.dark-mode .auth-page .auth-input {
+    background: #0b1220 !important;
+    color: #e5e7eb !important;
+
+    border-color:
+        #334155 !important;
+}
+
+body.dark-mode .auth-page .auth-input:focus {
+    background: #172033 !important;
+
+    border-color:
+        #2f8f83 !important;
+
+    box-shadow:
+        0 0 0 4px
+        rgba(47, 143, 131, 0.14) !important;
+}
+
+body.dark-mode .auth-page .auth-input::placeholder {
+    color: #64748b !important;
+}
+
+
+/* زر تسجيل الدخول وإنشاء الحساب */
+body.dark-mode .auth-page .auth-submit {
+    background:
+        linear-gradient(
+            135deg,
+            #2f8f83,
+            #167063
+        ) !important;
+
+    color: #ffffff !important;
+}
+
+
+/* النصوص والروابط */
+body.dark-mode .auth-page .auth-bottom-link {
+    color: #9ca3af !important;
+}
+
+body.dark-mode .auth-page .auth-bottom-link a,
+body.dark-mode .auth-page .auth-form-side a {
+    color: #5fc0b3 !important;
+}
+
+
+/* ===================================
+   Auth Branding Side - Premium Design
+=================================== */
+
+body .auth-page .auth-brand-side {
     position: relative !important;
-    min-height: 78px;
-}
+    overflow: hidden !important;
 
-/* الزر عاليسار */
-.theme-switch-fancy {
-    position: absolute;
-    left: 26px;
-    top: 50%;
-    transform: translateY(-50%);
+    padding: 48px 42px !important;
 
-    width: 56px;
-    height: 56px;
-    border-radius: 20px;
-
-    border: 1px solid rgba(11, 90, 85, 0.18);
-    background: linear-gradient(145deg, #ffffff, #eaf4f2);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 0 !important;
-    cursor: pointer;
-    overflow: hidden;
-    z-index: 50;
+    background:
+        radial-gradient(
+            circle at 15% 15%,
+            rgba(95, 192, 179, 0.20),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 90% 85%,
+            rgba(47, 143, 131, 0.18),
+            transparent 34%
+        ),
+        linear-gradient(
+            145deg,
+            #0f6b60 0%,
+            #07564d 48%,
+            #043f3a 100%
+        ) !important;
 
     box-shadow:
-        0 10px 25px rgba(11, 90, 85, 0.16),
-        inset 0 1px 0 rgba(255, 255, 255, 0.9);
-
-    transition: all 0.25s ease-in-out;
+        inset 0 0 70px rgba(0, 0, 0, 0.08) !important;
 }
 
-/* لمعة ناعمة */
-.theme-switch-shine {
-    position: absolute;
-    top: -40%;
-    right: -35%;
-    width: 80px;
-    height: 80px;
-    background: radial-gradient(circle, rgba(255,255,255,0.85), transparent 65%);
-    opacity: 0.9;
-    pointer-events: none;
+
+/* زخرفة خلفية ناعمة */
+
+body .auth-page .auth-brand-side::before {
+    content: '' !important;
+
+    position: absolute !important;
+
+    width: 320px !important;
+    height: 320px !important;
+
+    top: -160px !important;
+    left: -120px !important;
+
+    border-radius: 50% !important;
+
+    background:
+        rgba(255, 255, 255, 0.07) !important;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.08) !important;
 }
 
-/* الأيقونة */
-.theme-switch-icon {
-    position: relative;
-    z-index: 2;
-    font-size: 25px;
-    line-height: 1;
-    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
-    transition: transform 0.25s ease-in-out;
+
+body .auth-page .auth-brand-side::after {
+    content: '' !important;
+
+    position: absolute !important;
+
+    width: 270px !important;
+    height: 270px !important;
+
+    bottom: -130px !important;
+    right: -90px !important;
+
+    border-radius: 50% !important;
+
+    background:
+        rgba(95, 192, 179, 0.08) !important;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.06) !important;
 }
 
-/* حركة hover */
-.theme-switch-fancy:hover {
-    transform: translateY(-50%) scale(1.07);
+
+/* ===================================
+   Logo Area
+=================================== */
+
+body .auth-page .auth-logo {
+    position: relative !important;
+    z-index: 3 !important;
+
+    width: fit-content !important;
+
+    padding: 10px 14px !important;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.12) !important;
+
+    border-radius: 20px !important;
+
+    background:
+        rgba(255, 255, 255, 0.07) !important;
+
+    backdrop-filter: blur(12px);
+
     box-shadow:
-        0 14px 32px rgba(11, 90, 85, 0.22),
-        inset 0 1px 0 rgba(255, 255, 255, 1);
+        0 12px 30px
+        rgba(0, 0, 0, 0.12) !important;
 }
 
-.theme-switch-fancy:hover .theme-switch-icon {
-    transform: rotate(-12deg) scale(1.08);
-}
 
-/* لما يكون الوضع ليلي */
-.theme-switch-fancy.is-dark {
-    border-color: rgba(250, 204, 21, 0.22);
-    background: linear-gradient(145deg, #1f2937, #0f172a);
+body .auth-page .auth-logo-icon {
+    width: 62px !important;
+    height: 62px !important;
+
+    border-radius: 19px !important;
 
     box-shadow:
-        0 12px 30px rgba(0, 0, 0, 0.38),
-        0 0 20px rgba(250, 204, 21, 0.12),
-        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+        0 12px 30px
+        rgba(0, 0, 0, 0.24),
+        0 0 25px
+        rgba(95, 192, 179, 0.12) !important;
 }
 
-.theme-switch-fancy.is-dark .theme-switch-shine {
-    background: radial-gradient(circle, rgba(250,204,21,0.45), transparent 65%);
-    opacity: 0.75;
+
+body .auth-page .auth-logo-title {
+    font-size: 20px !important;
+    font-weight: 900 !important;
 }
 
-.theme-switch-fancy.is-dark .theme-switch-icon {
-    filter: drop-shadow(0 0 12px rgba(250, 204, 21, 0.45));
+
+body .auth-page .auth-logo-subtitle {
+    font-size: 10px !important;
 }
 
-/* بالموبايل يصغر شوي */
+
+/* ===================================
+   Main Branding Text
+=================================== */
+
+body .auth-page .auth-brand-content {
+    position: relative !important;
+    z-index: 3 !important;
+
+    margin: 55px 0 45px !important;
+}
+
+
+/* النص الصغير فوق العنوان */
+
+body .auth-page .auth-brand-eyebrow {
+    width: fit-content !important;
+
+    margin-bottom: 18px !important;
+    padding: 7px 13px !important;
+
+    display: inline-flex !important;
+    align-items: center !important;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.15) !important;
+
+    border-radius: 30px !important;
+
+    background:
+        rgba(255, 255, 255, 0.08) !important;
+
+    color:
+        rgba(255, 255, 255, 0.88) !important;
+
+    font-size: 10.5px !important;
+    font-weight: 800 !important;
+
+    backdrop-filter: blur(10px);
+}
+
+
+/* العنوان الرئيسي */
+
+body .auth-page .auth-brand-content h1 {
+    position: relative !important;
+
+    margin:
+        0 0 24px !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+
+    gap: 3px !important;
+
+    line-height: 1.3 !important;
+
+    letter-spacing: -0.5px !important;
+}
+
+
+body .auth-page .auth-headline-main {
+    color: #ffffff !important;
+
+    font-size: 38px !important;
+    font-weight: 900 !important;
+
+    text-shadow:
+        0 8px 25px
+        rgba(0, 0, 0, 0.18) !important;
+}
+
+
+body .auth-page .auth-headline-accent {
+    width: fit-content !important;
+
+    font-size: 44px !important;
+    font-weight: 900 !important;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff 0%,
+            #bff4eb 55%,
+            #72d7c8 100%
+        ) !important;
+
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+
+    -webkit-text-fill-color:
+        transparent !important;
+
+    color:
+        transparent !important;
+
+    text-shadow:
+        none !important;
+}
+
+
+/* الخط الزخرفي تحت العنوان */
+
+body .auth-page .auth-brand-content h1::after {
+    content: '' !important;
+
+    width: 72px !important;
+    height: 5px !important;
+
+    margin-top: 15px !important;
+
+    border-radius: 20px !important;
+
+    background:
+        linear-gradient(
+            90deg,
+            #70d7c8,
+            rgba(112, 215, 200, 0.15)
+        ) !important;
+
+    box-shadow:
+        0 0 18px
+        rgba(112, 215, 200, 0.35) !important;
+}
+
+
+/* الوصف */
+
+body .auth-page .auth-brand-content p {
+    max-width: 440px !important;
+
+    margin: 0 !important;
+
+    color:
+        rgba(255, 255, 255, 0.72) !important;
+
+    font-size: 12px !important;
+    font-weight: 500 !important;
+
+    line-height: 2.1 !important;
+}
+
+
+/* ===================================
+   Features
+=================================== */
+
+body .auth-page .auth-features {
+    position: relative !important;
+    z-index: 3 !important;
+
+    gap: 10px !important;
+}
+
+
+body .auth-page .auth-feature {
+    width: 100% !important;
+    max-width: 360px !important;
+
+    padding: 10px 12px !important;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.10) !important;
+
+    border-radius: 14px !important;
+
+    background:
+        rgba(255, 255, 255, 0.06) !important;
+
+    color:
+        rgba(255, 255, 255, 0.92) !important;
+
+    font-size: 10.5px !important;
+    font-weight: 800 !important;
+
+    backdrop-filter: blur(10px);
+
+    box-shadow:
+        0 8px 22px
+        rgba(0, 0, 0, 0.08) !important;
+
+    transition:
+        all 0.25s ease !important;
+}
+
+
+body .auth-page .auth-feature:hover {
+    transform:
+        translateX(-5px) !important;
+
+    background:
+        rgba(255, 255, 255, 0.10) !important;
+
+    border-color:
+        rgba(112, 215, 200, 0.25) !important;
+}
+
+
+body .auth-page .auth-feature-icon {
+    width: 31px !important;
+    height: 31px !important;
+
+    border-radius: 10px !important;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(112, 215, 200, 0.25),
+            rgba(255, 255, 255, 0.08)
+        ) !important;
+
+    color: #ffffff !important;
+
+    box-shadow:
+        inset 0 0 0 1px
+        rgba(255, 255, 255, 0.08) !important;
+}
+
+
+/* ===================================
+   Premium Dark Mode
+=================================== */
+
+body.dark-mode .auth-page .auth-brand-side {
+    background:
+        radial-gradient(
+            circle at 15% 15%,
+            rgba(47, 143, 131, 0.16),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 90% 85%,
+            rgba(95, 192, 179, 0.10),
+            transparent 34%
+        ),
+        linear-gradient(
+            145deg,
+            #172033 0%,
+            #111827 50%,
+            #0b1220 100%
+        ) !important;
+
+    border-left:
+        1px solid
+        rgba(95, 192, 179, 0.08) !important;
+}
+
+
+body.dark-mode .auth-page .auth-logo {
+    background:
+        rgba(255, 255, 255, 0.04) !important;
+
+    border-color:
+        rgba(255, 255, 255, 0.08) !important;
+}
+
+
+body.dark-mode .auth-page .auth-brand-eyebrow {
+    background:
+        rgba(95, 192, 179, 0.08) !important;
+
+    border-color:
+        rgba(95, 192, 179, 0.14) !important;
+
+    color:
+        #a7e5dc !important;
+}
+
+
+body.dark-mode .auth-page .auth-feature {
+    background:
+        rgba(255, 255, 255, 0.035) !important;
+
+    border-color:
+        rgba(255, 255, 255, 0.07) !important;
+}
+
+
+/* ===================================
+   Responsive
+=================================== */
+
+@media (max-width: 991px) {
+
+    .page-title,
+    main.content h1 {
+        font-size: 22px !important;
+    }
+}
+
 @media (max-width: 768px) {
+
     .theme-switch-fancy {
-        left: 14px;
-        width: 48px;
-        height: 48px;
-        border-radius: 16px;
+        left: 14px !important;
+
+        width: 48px !important;
+        height: 48px !important;
+
+        border-radius: 16px !important;
     }
 
     .theme-switch-icon {
         font-size: 22px;
     }
-}
-.theme-switch-fancy {
-    position: fixed !important;
-    left: 24px !important;
-    top: 24px !important;
-
-    width: 54px !important;
-    height: 54px !important;
-    border-radius: 18px !important;
-
-    background: linear-gradient(145deg, #ffffff, #eaf4f2) !important;
-    border: 1px solid rgba(11, 90, 85, 0.18) !important;
-
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-
-    padding: 0 !important;
-    z-index: 99999 !important;
-    cursor: pointer !important;
-    overflow: hidden !important;
-
-    box-shadow: 0 10px 25px rgba(11, 90, 85, 0.18) !important;
-    transition: all 0.25s ease-in-out !important;
-}
-
-.theme-switch-fancy:hover {
-    transform: scale(1.08) !important;
-}
-
-.theme-switch-icon {
-    position: relative;
-    z-index: 2;
-    font-size: 25px;
-    line-height: 1;
-}
-
-.theme-switch-shine {
-    position: absolute;
-    top: -35%;
-    right: -35%;
-    width: 75px;
-    height: 75px;
-    background: radial-gradient(circle, rgba(255,255,255,0.8), transparent 65%);
-}
-
-.theme-switch-fancy.is-dark {
-    background: linear-gradient(145deg, #1f2937, #0f172a) !important;
-    border-color: rgba(250, 204, 21, 0.25) !important;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.38) !important;
-}
-
-/* ===============================
-   Sidebar Final Fixed Style
-   =============================== */
-
-/* خلفية السايدبار تبقى أخضر */
-.sidebar {
-    background: linear-gradient(180deg, #0f6b60 0%, #07564d 100%) !important;
-    border-left: none !important;
-}
-
-.sidebar-content {
-    background: transparent !important;
-    padding: 18px 14px;
-}
-
-/* عنوان Smart City */
-.sidebar .brand-logo {
-    background: rgba(255, 255, 255, 0.13) !important;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 22px;
-    padding: 16px 14px;
-    margin-bottom: 26px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    text-decoration: none;
-    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.14);
-    backdrop-filter: blur(8px);
-}
-
-.sidebar .brand-logo:hover {
-    background: rgba(255, 255, 255, 0.18) !important;
-}
-
-.sidebar .brand-mark {
-    width: 52px;
-    height: 52px;
-    border-radius: 17px;
-    background: linear-gradient(135deg, #ffffff, #e8f6f2);
-    color: #167063;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
-    flex-shrink: 0;
-}
-
-.sidebar .brand-mark.city-logo svg {
-    width: 36px;
-    height: 36px;
-    stroke: currentColor;
-    fill: none;
-    stroke-width: 3;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.sidebar .brand-text {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    line-height: 1.3;
-}
-
-.sidebar .brand-title {
-    font-size: 22px;
-    font-weight: 900;
-    color: #ffffff !important;
-    letter-spacing: 0.5px;
-}
-
-.sidebar .brand-subtitle {
-    margin-top: 3px;
-    font-size: 12px;
-    font-weight: 700;
-    color: rgba(255, 255, 255, 0.78) !important;
-}
-
-/* عناوين الأقسام */
-.sidebar .sidebar-header {
-    color: rgba(255, 255, 255, 0.78) !important;
-    font-size: 12px;
-    font-weight: 800;
-    padding: 14px 10px 8px;
-    text-align: right;
-}
-
-/* شكل الأزرار الأساسي */
-.sidebar .sidebar-link {
-    background: #ffffff !important;
-    color: #172b2a !important;
-    border-radius: 16px;
-    margin: 7px 0;
-    padding: 13px 14px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 11px;
-    direction: rtl;
-    text-align: right;
-    border: none !important;
-    box-shadow: 0 7px 18px rgba(0, 0, 0, 0.08);
-    transition: all 0.22s ease !important;
-}
-
-/* إلغاء أي تحديد تلقائي للزر active */
-.sidebar .sidebar-item.active .sidebar-link {
-    background: #ffffff !important;
-    color: #172b2a !important;
-    font-weight: 800 !important;
-    box-shadow: 0 7px 18px rgba(0, 0, 0, 0.08) !important;
-}
-
-/* الهوفر أخضر وليس كحلي */
-.sidebar .sidebar-link:hover,
-.sidebar .sidebar-link:focus,
-.sidebar .sidebar-item.active .sidebar-link:hover {
-    background: #2f8f83 !important;
-    color: #ffffff !important;
-    transform: translateX(-3px);
-    box-shadow: 0 10px 22px rgba(47, 143, 131, 0.28) !important;
-}
-
-/* إزالة الخط الأزرق */
-.sidebar .sidebar-item.active .sidebar-link::before,
-.sidebar .sidebar-link::before {
-    display: none !important;
-    content: none !important;
-}
-
-/* الأيقونات بالحالة العادية */
-.sidebar .sidebar-link i,
-.sidebar .sidebar-link svg,
-.sidebar .sidebar-item.active .sidebar-link i,
-.sidebar .sidebar-item.active .sidebar-link svg {
-    color: #167063 !important;
-    width: 19px;
-    height: 19px;
-    margin-left: 8px;
-    margin-right: 0;
-}
-
-/* الأيقونات وقت الهوفر */
-.sidebar .sidebar-link:hover i,
-.sidebar .sidebar-link:hover svg,
-.sidebar .sidebar-item.active .sidebar-link:hover i,
-.sidebar .sidebar-item.active .sidebar-link:hover svg {
-    color: #ffffff !important;
-}
-
-/* الكتابة العربية عاليمين */
-.sidebar .sidebar-link span {
-    flex: 1;
-    text-align: right;
-    font-weight: 800;
-}
-
-/* منع لون AdminKit الأزرق */
-.sidebar-brand {
-    color: inherit !important;
-}
-
-.sidebar-brand:hover {
-    color: inherit !important;
 }

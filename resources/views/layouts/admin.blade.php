@@ -153,7 +153,10 @@
                             <a class="dropdown-item" href="#">الملف الشخصي</a>
                             <a class="dropdown-item" href="#">الإعدادات</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">تسجيل الخروج</a>
+                            <a class="dropdown-item" href="{{ route('login') }}">
+                                <i data-feather="log-out"></i>
+                                 تسجيل الخروج
+                            </a>
                         </div>
                     </li>
 

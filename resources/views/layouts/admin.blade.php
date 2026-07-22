@@ -120,6 +120,10 @@
         <!-- Navbar -->
         <nav class="navbar navbar-expand navbar-light navbar-bg">
 
+        <button class="sidebar-toggle js-sidebar-toggle d-lg-none" type="button" aria-label="فتح القائمة">
+    <i data-feather="menu"></i>
+</button>
+
             <button type="button" id="themeToggle" class="theme-switch-fancy" aria-label="تبديل الوضع">
                 <span class="theme-switch-shine"></span>
                 <span id="themeIcon" class="theme-switch-icon">🌙</span>

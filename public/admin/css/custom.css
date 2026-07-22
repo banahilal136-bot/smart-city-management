@@ -22,6 +22,9 @@
 
     --shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
     --radius: 16px;
+
+    --admin-header-height: 86px;
+    --admin-sidebar-width: 260px;
 }
 
 
@@ -356,7 +359,7 @@ small,
 }
 
 
-/* Hover + Current Active Page */
+/* Hover + Active Page */
 
 .sidebar .sidebar-item.active .sidebar-link,
 .sidebar .sidebar-link:hover,
@@ -394,14 +397,6 @@ small,
 }
 
 
-/* Hide Sidebar Toggle */
-
-.sidebar-toggle,
-.js-sidebar-toggle {
-    display: none !important;
-}
-
-
 /* Logout Button */
 
 .sidebar .btn-logout {
@@ -431,9 +426,7 @@ small,
 =================================== */
 
 .navbar {
-    position: relative !important;
-
-    min-height: 78px;
+    min-height: var(--admin-header-height);
 
     background: #ffffff !important;
 
@@ -462,20 +455,39 @@ small,
 }
 
 
-/* Top User */
+/* ===================================
+   Top User
+=================================== */
 
 .top-user {
-    display: flex;
-    align-items: center;
+    display: flex !important;
+    align-items: center !important;
 
-    gap: 10px;
+    flex-direction: row !important;
+    direction: rtl !important;
+
+    gap: 10px !important;
 }
 
 .top-user img {
+    order: 0 !important;
+
     width: 40px;
     height: 40px;
 
     border-radius: 50%;
+
+    flex-shrink: 0 !important;
+}
+
+.top-user > span {
+    order: 1 !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+
+    direction: rtl !important;
+    text-align: right !important;
 }
 
 .top-user .name {
@@ -487,6 +499,8 @@ small,
     font-weight: 800;
 
     line-height: 1.1;
+
+    text-align: right !important;
 }
 
 .top-user .role {
@@ -495,6 +509,8 @@ small,
     color: var(--text-muted);
 
     font-size: 11px !important;
+
+    text-align: right !important;
 }
 
 
@@ -643,14 +659,11 @@ small,
 .card {
     border: 0 !important;
 
-    border-radius:
-        var(--radius) !important;
+    border-radius: var(--radius) !important;
 
-    background:
-        var(--card-bg) !important;
+    background: var(--card-bg) !important;
 
-    box-shadow:
-        var(--shadow) !important;
+    box-shadow: var(--shadow) !important;
 }
 
 .card-header {
@@ -1019,8 +1032,7 @@ textarea.form-control {
 
     gap: 10px;
 
-    box-shadow:
-        var(--shadow);
+    box-shadow: var(--shadow);
 
     transition: 0.2s;
 }
@@ -1058,22 +1070,18 @@ body.dark-mode {
     --text-main: #e5e7eb;
     --text-muted: #9ca3af;
 
-    background:
-        var(--page-bg) !important;
+    background: var(--page-bg) !important;
 
-    color:
-        var(--text-main) !important;
+    color: var(--text-main) !important;
 }
 
 body.dark-mode .main,
 body.dark-mode .content,
 body.dark-mode main.content,
 body.dark-mode .wrapper {
-    background:
-        var(--page-bg) !important;
+    background: var(--page-bg) !important;
 
-    color:
-        var(--text-main) !important;
+    color: var(--text-main) !important;
 }
 
 
@@ -1082,13 +1090,11 @@ body.dark-mode .wrapper {
 body.dark-mode .navbar {
     background: #111827 !important;
 
-    border-bottom-color:
-        var(--border) !important;
+    border-bottom-color: var(--border) !important;
 }
 
 body.dark-mode .top-user .name {
-    color:
-        var(--text-main) !important;
+    color: var(--text-main) !important;
 }
 
 body.dark-mode .top-user .role,
@@ -1098,8 +1104,7 @@ body.dark-mode .stat-desc,
 body.dark-mode .info-label,
 body.dark-mode .timeline-date,
 body.dark-mode .report-location-meta {
-    color:
-        var(--text-muted) !important;
+    color: var(--text-muted) !important;
 }
 
 
@@ -1108,11 +1113,9 @@ body.dark-mode .report-location-meta {
 body.dark-mode .card,
 body.dark-mode .card-header,
 body.dark-mode .card-body {
-    background:
-        var(--card-bg) !important;
+    background: var(--card-bg) !important;
 
-    color:
-        var(--text-main) !important;
+    color: var(--text-main) !important;
 }
 
 body.dark-mode .card {
@@ -1126,8 +1129,7 @@ body.dark-mode .card {
 }
 
 body.dark-mode .card-header {
-    border-bottom-color:
-        var(--border) !important;
+    border-bottom-color: var(--border) !important;
 }
 
 
@@ -1146,32 +1148,27 @@ body.dark-mode .stat-title,
 body.dark-mode .info-value,
 body.dark-mode .timeline-title,
 body.dark-mode .report-location-title {
-    color:
-        var(--text-main) !important;
+    color: var(--text-main) !important;
 }
 
 
 /* Dark Tables */
 
 body.dark-mode .table {
-    color:
-        var(--text-main) !important;
+    color: var(--text-main) !important;
 }
 
 body.dark-mode .table thead th {
     background: #172033 !important;
 
-    color:
-        var(--text-main) !important;
+    color: var(--text-main) !important;
 
-    border-color:
-        var(--border) !important;
+    border-color: var(--border) !important;
 }
 
 body.dark-mode .table td,
 body.dark-mode .table th {
-    border-color:
-        var(--border) !important;
+    border-color: var(--border) !important;
 }
 
 body.dark-mode .table-hover tbody tr:hover {
@@ -1186,17 +1183,14 @@ body.dark-mode .form-select,
 body.dark-mode textarea {
     background: #0b1220 !important;
 
-    color:
-        var(--text-main) !important;
+    color: var(--text-main) !important;
 
-    border-color:
-        #334155 !important;
+    border-color: #334155 !important;
 }
 
 body.dark-mode .form-control::placeholder,
 body.dark-mode textarea::placeholder {
-    color:
-        #94a3b8 !important;
+    color: #94a3b8 !important;
 }
 
 
@@ -1205,16 +1199,13 @@ body.dark-mode textarea::placeholder {
 body.dark-mode .btn-light {
     background: #1f2937 !important;
 
-    color:
-        var(--text-main) !important;
+    color: var(--text-main) !important;
 
-    border-color:
-        #334155 !important;
+    border-color: #334155 !important;
 }
 
 body.dark-mode .bg-white {
-    background-color:
-        var(--card-bg) !important;
+    background-color: var(--card-bg) !important;
 }
 
 
@@ -1241,8 +1232,7 @@ body.dark-mode .main-map {
             rgba(75, 142, 136, 0.12) 39px
         ) !important;
 
-    border-color:
-        #334155 !important;
+    border-color: #334155 !important;
 }
 
 
@@ -1252,80 +1242,64 @@ body.dark-mode .image-placeholder,
 body.dark-mode .status-box,
 body.dark-mode .report-location-item,
 body.dark-mode .quick-action {
-    background:
-        #0b1220 !important;
+    background: #0b1220 !important;
 
-    border-color:
-        #334155 !important;
+    border-color: #334155 !important;
 
-    color:
-        var(--text-main) !important;
+    color: var(--text-main) !important;
 }
 
 body.dark-mode .map-label {
-    background:
-        #111827 !important;
+    background: #111827 !important;
 
-    color:
-        var(--text-main) !important;
+    color: var(--text-main) !important;
 
-    border-color:
-        #334155 !important;
+    border-color: #334155 !important;
 }
 
 
 /* Dark Alerts */
 
 body.dark-mode .alert-success {
-    background:
-        #12352f !important;
+    background: #12352f !important;
 
-    color:
-        #d1fae5 !important;
+    color: #d1fae5 !important;
 
-    border-color:
-        #245a50 !important;
+    border-color: #245a50 !important;
 }
 
 body.dark-mode .alert-warning {
-    background:
-        #3b2f12 !important;
+    background: #3b2f12 !important;
 
-    color:
-        #fde68a !important;
+    color: #fde68a !important;
 
-    border-color:
-        #785f1d !important;
+    border-color: #785f1d !important;
 }
 
 
 /* Dark Dropdown */
 
 body.dark-mode .dropdown-menu {
-    background:
-        #111827 !important;
+    background: #111827 !important;
 
-    border-color:
-        #334155 !important;
+    border-color: #334155 !important;
 }
 
 body.dark-mode .dropdown-item {
-    color:
-        var(--text-main) !important;
+    color: var(--text-main) !important;
 }
 
 body.dark-mode .dropdown-item:hover {
-    background:
-        #1f2937 !important;
+    background: #1f2937 !important;
 }
 
 
 /* Dark Progress */
 
 body.dark-mode .progress {
-    background:
-        #263244 !important;
+    background: #263244 !important;
 }
+
 
 /* ===================================
    Dark Sidebar
@@ -1345,8 +1319,6 @@ body.dark-mode .sidebar-content {
     background: transparent !important;
 }
 
-
-/* عنوان Smart City بالوضع الليلي */
 body.dark-mode .sidebar .brand-logo {
     background: rgba(255, 255, 255, 0.06) !important;
 
@@ -1363,8 +1335,6 @@ body.dark-mode .sidebar .brand-logo:hover {
         rgba(255, 255, 255, 0.09) !important;
 }
 
-
-/* أيقونة المدينة */
 body.dark-mode .sidebar .brand-mark {
     background:
         linear-gradient(
@@ -1380,8 +1350,6 @@ body.dark-mode .sidebar .brand-mark {
         rgba(0, 0, 0, 0.35) !important;
 }
 
-
-/* اسم المشروع */
 body.dark-mode .sidebar .brand-title {
     color: #f8fafc !important;
 }
@@ -1391,15 +1359,11 @@ body.dark-mode .sidebar .brand-subtitle {
         rgba(229, 231, 235, 0.72) !important;
 }
 
-
-/* عناوين الأقسام */
 body.dark-mode .sidebar .sidebar-header {
     color:
         rgba(229, 231, 235, 0.65) !important;
 }
 
-
-/* أزرار السايدبار بالوضع الليلي */
 body.dark-mode .sidebar .sidebar-link {
     background: #172033 !important;
     color: #e5e7eb !important;
@@ -1409,15 +1373,11 @@ body.dark-mode .sidebar .sidebar-link {
         rgba(0, 0, 0, 0.18) !important;
 }
 
-
-/* الأيقونات */
 body.dark-mode .sidebar .sidebar-link i,
 body.dark-mode .sidebar .sidebar-link svg {
     color: #5fc0b3 !important;
 }
 
-
-/* Hover + التبويبة الحالية */
 body.dark-mode .sidebar .sidebar-item.active .sidebar-link,
 body.dark-mode .sidebar .sidebar-link:hover,
 body.dark-mode .sidebar .sidebar-link:focus,
@@ -1432,8 +1392,6 @@ body.dark-mode .sidebar .sidebar-item.active .sidebar-link:hover {
         rgba(0, 0, 0, 0.30) !important;
 }
 
-
-/* أيقونة الصفحة الحالية والهوفر */
 body.dark-mode .sidebar .sidebar-item.active .sidebar-link i,
 body.dark-mode .sidebar .sidebar-item.active .sidebar-link svg,
 body.dark-mode .sidebar .sidebar-link:hover i,
@@ -1443,33 +1401,10 @@ body.dark-mode .sidebar .sidebar-link:focus svg {
     color: #ffffff !important;
 }
 
+
 /* ===================================
-   Authentication Pages - Final
+   Authentication Pages
 =================================== */
-
-/* تصغير الخطوط بقوة حتى تتغلب على CSS داخل auth.blade.php */
-
-body .auth-page .auth-logo-title {
-    font-size: 17px !important;
-}
-
-body .auth-page .auth-logo-subtitle {
-    font-size: 9px !important;
-}
-
-body .auth-page .auth-brand-content h1 {
-    font-size: 23px !important;
-    line-height: 1.5 !important;
-}
-
-body .auth-page .auth-brand-content p {
-    font-size: 11px !important;
-    line-height: 1.9 !important;
-}
-
-body .auth-page .auth-feature {
-    font-size: 10.5px !important;
-}
 
 body .auth-page .auth-form-header h2 {
     font-size: 20px !important;
@@ -1498,10 +1433,9 @@ body .auth-page .auth-bottom-link a {
 
 
 /* ===================================
-   Authentication Dark Mode - Final
+   Authentication Dark Mode
 =================================== */
 
-/* خلفية الصفحة كلها */
 body.dark-mode,
 body.dark-mode .auth-page {
     background:
@@ -1515,8 +1449,6 @@ body.dark-mode .auth-page {
     color: #e5e7eb !important;
 }
 
-
-/* الحاوية الرئيسية كلها */
 body.dark-mode .auth-page .auth-wrapper {
     background: #111827 !important;
 
@@ -1525,36 +1457,10 @@ body.dark-mode .auth-page .auth-wrapper {
         rgba(0, 0, 0, 0.50) !important;
 }
 
-
-/* الطرف الخاص بالشعار يصير ليلي أيضاً */
-body.dark-mode .auth-page .auth-brand-side {
-    background:
-        linear-gradient(
-            160deg,
-            #172033 0%,
-            #111827 55%,
-            #0b1220 100%
-        ) !important;
-
-    color: #e5e7eb !important;
-}
-
-
-/* الدوائر الزخرفية */
-body.dark-mode .auth-page .auth-brand-side::before,
-body.dark-mode .auth-page .auth-brand-side::after {
-    background:
-        rgba(95, 192, 179, 0.06) !important;
-}
-
-
-/* جهة الفورم */
 body.dark-mode .auth-page .auth-form-side {
     background: #111827 !important;
 }
 
-
-/* الشعار */
 body.dark-mode .auth-page .auth-logo-icon {
     background:
         linear-gradient(
@@ -1579,8 +1485,6 @@ body.dark-mode .auth-page .auth-logo-subtitle {
         rgba(229, 231, 235, 0.72) !important;
 }
 
-
-/* نص الجهة الجانبية */
 body.dark-mode .auth-page .auth-brand-content h1 {
     color: #f8fafc !important;
 }
@@ -1594,14 +1498,9 @@ body.dark-mode .auth-page .auth-feature {
 }
 
 body.dark-mode .auth-page .auth-feature-icon {
-    background:
-        rgba(95, 192, 179, 0.12) !important;
-
     color: #ffffff !important;
 }
 
-
-/* عنوان الفورم */
 body.dark-mode .auth-page .auth-form-header h2 {
     color: #f3f4f6 !important;
 }
@@ -1610,28 +1509,22 @@ body.dark-mode .auth-page .auth-form-header p {
     color: #9ca3af !important;
 }
 
-
-/* أسماء الحقول */
 body.dark-mode .auth-page .auth-field label,
 body.dark-mode .auth-page .auth-form-side label {
     color: #d1d5db !important;
 }
 
-
-/* الحقول */
 body.dark-mode .auth-page .auth-input {
     background: #0b1220 !important;
     color: #e5e7eb !important;
 
-    border-color:
-        #334155 !important;
+    border-color: #334155 !important;
 }
 
 body.dark-mode .auth-page .auth-input:focus {
     background: #172033 !important;
 
-    border-color:
-        #2f8f83 !important;
+    border-color: #2f8f83 !important;
 
     box-shadow:
         0 0 0 4px
@@ -1642,8 +1535,6 @@ body.dark-mode .auth-page .auth-input::placeholder {
     color: #64748b !important;
 }
 
-
-/* زر تسجيل الدخول وإنشاء الحساب */
 body.dark-mode .auth-page .auth-submit {
     background:
         linear-gradient(
@@ -1655,8 +1546,6 @@ body.dark-mode .auth-page .auth-submit {
     color: #ffffff !important;
 }
 
-
-/* النصوص والروابط */
 body.dark-mode .auth-page .auth-bottom-link {
     color: #9ca3af !important;
 }
@@ -1696,11 +1585,9 @@ body .auth-page .auth-brand-side {
         ) !important;
 
     box-shadow:
-        inset 0 0 70px rgba(0, 0, 0, 0.08) !important;
+        inset 0 0 70px
+        rgba(0, 0, 0, 0.08) !important;
 }
-
-
-/* زخرفة خلفية ناعمة */
 
 body .auth-page .auth-brand-side::before {
     content: '' !important;
@@ -1722,7 +1609,6 @@ body .auth-page .auth-brand-side::before {
         1px solid
         rgba(255, 255, 255, 0.08) !important;
 }
-
 
 body .auth-page .auth-brand-side::after {
     content: '' !important;
@@ -1746,9 +1632,7 @@ body .auth-page .auth-brand-side::after {
 }
 
 
-/* ===================================
-   Logo Area
-=================================== */
+/* Logo Area */
 
 body .auth-page .auth-logo {
     position: relative !important;
@@ -1774,7 +1658,6 @@ body .auth-page .auth-logo {
         rgba(0, 0, 0, 0.12) !important;
 }
 
-
 body .auth-page .auth-logo-icon {
     width: 62px !important;
     height: 62px !important;
@@ -1788,21 +1671,17 @@ body .auth-page .auth-logo-icon {
         rgba(95, 192, 179, 0.12) !important;
 }
 
-
 body .auth-page .auth-logo-title {
     font-size: 20px !important;
     font-weight: 900 !important;
 }
-
 
 body .auth-page .auth-logo-subtitle {
     font-size: 10px !important;
 }
 
 
-/* ===================================
-   Main Branding Text
-=================================== */
+/* Main Branding Text */
 
 body .auth-page .auth-brand-content {
     position: relative !important;
@@ -1810,9 +1689,6 @@ body .auth-page .auth-brand-content {
 
     margin: 55px 0 45px !important;
 }
-
-
-/* النص الصغير فوق العنوان */
 
 body .auth-page .auth-brand-eyebrow {
     width: fit-content !important;
@@ -1841,14 +1717,10 @@ body .auth-page .auth-brand-eyebrow {
     backdrop-filter: blur(10px);
 }
 
-
-/* العنوان الرئيسي */
-
 body .auth-page .auth-brand-content h1 {
     position: relative !important;
 
-    margin:
-        0 0 24px !important;
+    margin: 0 0 24px !important;
 
     display: flex !important;
     flex-direction: column !important;
@@ -1860,7 +1732,6 @@ body .auth-page .auth-brand-content h1 {
     letter-spacing: -0.5px !important;
 }
 
-
 body .auth-page .auth-headline-main {
     color: #ffffff !important;
 
@@ -1871,7 +1742,6 @@ body .auth-page .auth-headline-main {
         0 8px 25px
         rgba(0, 0, 0, 0.18) !important;
 }
-
 
 body .auth-page .auth-headline-accent {
     width: fit-content !important;
@@ -1890,18 +1760,12 @@ body .auth-page .auth-headline-accent {
     -webkit-background-clip: text !important;
     background-clip: text !important;
 
-    -webkit-text-fill-color:
-        transparent !important;
+    -webkit-text-fill-color: transparent !important;
 
-    color:
-        transparent !important;
+    color: transparent !important;
 
-    text-shadow:
-        none !important;
+    text-shadow: none !important;
 }
-
-
-/* الخط الزخرفي تحت العنوان */
 
 body .auth-page .auth-brand-content h1::after {
     content: '' !important;
@@ -1925,9 +1789,6 @@ body .auth-page .auth-brand-content h1::after {
         rgba(112, 215, 200, 0.35) !important;
 }
 
-
-/* الوصف */
-
 body .auth-page .auth-brand-content p {
     max-width: 440px !important;
 
@@ -1943,9 +1804,7 @@ body .auth-page .auth-brand-content p {
 }
 
 
-/* ===================================
-   Features
-=================================== */
+/* Auth Features */
 
 body .auth-page .auth-features {
     position: relative !important;
@@ -1953,7 +1812,6 @@ body .auth-page .auth-features {
 
     gap: 10px !important;
 }
-
 
 body .auth-page .auth-feature {
     width: 100% !important;
@@ -1986,7 +1844,6 @@ body .auth-page .auth-feature {
         all 0.25s ease !important;
 }
 
-
 body .auth-page .auth-feature:hover {
     transform:
         translateX(-5px) !important;
@@ -1997,7 +1854,6 @@ body .auth-page .auth-feature:hover {
     border-color:
         rgba(112, 215, 200, 0.25) !important;
 }
-
 
 body .auth-page .auth-feature-icon {
     width: 31px !important;
@@ -2021,7 +1877,7 @@ body .auth-page .auth-feature-icon {
 
 
 /* ===================================
-   Premium Dark Mode
+   Premium Auth Dark Mode
 =================================== */
 
 body.dark-mode .auth-page .auth-brand-side {
@@ -2048,6 +1904,11 @@ body.dark-mode .auth-page .auth-brand-side {
         rgba(95, 192, 179, 0.08) !important;
 }
 
+body.dark-mode .auth-page .auth-brand-side::before,
+body.dark-mode .auth-page .auth-brand-side::after {
+    background:
+        rgba(95, 192, 179, 0.06) !important;
+}
 
 body.dark-mode .auth-page .auth-logo {
     background:
@@ -2057,7 +1918,6 @@ body.dark-mode .auth-page .auth-logo {
         rgba(255, 255, 255, 0.08) !important;
 }
 
-
 body.dark-mode .auth-page .auth-brand-eyebrow {
     background:
         rgba(95, 192, 179, 0.08) !important;
@@ -2065,10 +1925,8 @@ body.dark-mode .auth-page .auth-brand-eyebrow {
     border-color:
         rgba(95, 192, 179, 0.14) !important;
 
-    color:
-        #a7e5dc !important;
+    color: #a7e5dc !important;
 }
-
 
 body.dark-mode .auth-page .auth-feature {
     background:
@@ -2080,20 +1938,281 @@ body.dark-mode .auth-page .auth-feature {
 
 
 /* ===================================
-   Responsive
+   Fixed Header + Responsive Layout
 =================================== */
 
-@media (max-width: 991px) {
+.main {
+    padding-top: var(--admin-header-height) !important;
+}
+
+
+/* Fixed Desktop Header */
+
+.navbar.navbar-bg {
+    position: fixed !important;
+
+    top: 0 !important;
+    left: 0 !important;
+    right: var(--admin-sidebar-width) !important;
+
+    width:
+        calc(
+            100% - var(--admin-sidebar-width)
+        ) !important;
+
+    min-height:
+        var(--admin-header-height) !important;
+
+    height:
+        var(--admin-header-height) !important;
+
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+
+    display: flex !important;
+    align-items: center !important;
+
+    z-index: 1035 !important;
+}
+
+
+/* Theme Button Inside Header */
+
+.navbar.navbar-bg .theme-switch-fancy {
+    position: absolute !important;
+
+    top: 50% !important;
+    left: 24px !important;
+
+    transform:
+        translateY(-50%) !important;
+}
+
+.navbar.navbar-bg .theme-switch-fancy:hover {
+    transform:
+        translateY(-50%)
+        scale(1.08) !important;
+}
+
+
+/* Sidebar Toggle */
+
+.sidebar-toggle,
+.js-sidebar-toggle {
+    width: 44px;
+    height: 44px;
+
+    padding: 0 !important;
+    margin-left: 12px;
+
+    border: 0;
+    border-radius: 12px;
+
+    background: transparent !important;
+    color: var(--text-main) !important;
+
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0 !important;
+
+    cursor: pointer;
+}
+
+.sidebar-toggle svg,
+.js-sidebar-toggle svg {
+    width: 24px;
+    height: 24px;
+}
+
+
+/* Fixed Header Dark Mode */
+
+body.dark-mode .navbar.navbar-bg {
+    background: #111827 !important;
+}
+
+body.dark-mode .sidebar-toggle,
+body.dark-mode .js-sidebar-toggle {
+    color: #ffffff !important;
+}
+
+
+/* ===================================
+   Tablet + Small Screens
+=================================== */
+
+@media (max-width: 991.98px) {
+
+    /* Sidebar Closed */
+
+    #sidebar.sidebar {
+        position: fixed !important;
+
+        top: 0 !important;
+
+        right:
+            calc(
+                -1 * var(--admin-sidebar-width)
+            ) !important;
+
+        left: auto !important;
+
+        width:
+            var(--admin-sidebar-width) !important;
+
+        min-width:
+            var(--admin-sidebar-width) !important;
+
+        max-width:
+            var(--admin-sidebar-width) !important;
+
+        height: 100vh !important;
+
+        margin: 0 !important;
+
+        z-index: 1100 !important;
+
+        transition:
+            right 0.3s ease !important;
+    }
+
+
+    /* Sidebar Open */
+
+    #sidebar.sidebar.collapsed {
+        right: 0 !important;
+        left: auto !important;
+    }
+
+
+    /* Main - Sidebar Closed */
+
+    #sidebar.sidebar + .main {
+        width: 100% !important;
+
+        margin-right: 0 !important;
+
+        transition:
+            width 0.3s ease,
+            margin-right 0.3s ease !important;
+    }
+
+
+    /* Main - Sidebar Open */
+
+    #sidebar.sidebar.collapsed + .main {
+        width:
+            calc(
+                100% - var(--admin-sidebar-width)
+            ) !important;
+
+        margin-right:
+            var(--admin-sidebar-width) !important;
+    }
+
+
+    /* Header - Sidebar Closed */
+
+    #sidebar.sidebar + .main .navbar.navbar-bg {
+        right: 0 !important;
+
+        width: 100% !important;
+
+        padding-right: 16px !important;
+        padding-left: 80px !important;
+
+        transition:
+            width 0.3s ease,
+            right 0.3s ease !important;
+    }
+
+
+    /* Header - Sidebar Open */
+
+    #sidebar.sidebar.collapsed + .main .navbar.navbar-bg {
+        right:
+            var(--admin-sidebar-width) !important;
+
+        width:
+            calc(
+                100% - var(--admin-sidebar-width)
+            ) !important;
+    }
+
+
+    /* Toggle Always Visible */
+
+    .sidebar-toggle,
+    .js-sidebar-toggle {
+        position: relative !important;
+
+        z-index: 1200 !important;
+
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+
+    /* Responsive Navbar */
+
+    .navbar .form-control {
+        min-width: 0 !important;
+        width: 100% !important;
+    }
+
+    .navbar .nav-item.me-3 {
+        flex: 1 !important;
+        min-width: 0 !important;
+    }
+
+    .navbar-collapse {
+        min-width: 0 !important;
+    }
+
+    .navbar-nav {
+        width: 100%;
+
+        align-items: center;
+    }
+
+
+    /* Responsive Content */
+
+    .content {
+        padding:
+            1.25rem
+            1rem
+            1rem !important;
+    }
 
     .page-title,
     main.content h1 {
         font-size: 22px !important;
     }
+
+
+    /* Prevent Horizontal Overflow */
+
+    body,
+    .wrapper {
+        overflow-x: hidden !important;
+    }
 }
+
+
+/* ===================================
+   Medium Mobile
+=================================== */
 
 @media (max-width: 768px) {
 
-    .theme-switch-fancy {
+    .navbar.navbar-bg .theme-switch-fancy {
         left: 14px !important;
 
         width: 48px !important;
@@ -2104,5 +2223,59 @@ body.dark-mode .auth-page .auth-feature {
 
     .theme-switch-icon {
         font-size: 22px;
+    }
+}
+
+
+/* ===================================
+   Small Mobile
+=================================== */
+
+@media (max-width: 575.98px) {
+
+    :root {
+        --admin-header-height: 76px;
+    }
+
+    .navbar.navbar-bg {
+        padding-right: 10px !important;
+        padding-left: 68px !important;
+    }
+
+    .navbar.navbar-bg .theme-switch-fancy {
+        width: 46px !important;
+        height: 46px !important;
+    }
+
+    .sidebar-toggle,
+    .js-sidebar-toggle {
+        width: 40px;
+        height: 40px;
+
+        margin-left: 6px;
+    }
+
+    .navbar .nav-item.me-3 {
+        display: none !important;
+    }
+
+    .top-user img {
+        width: 36px !important;
+        height: 36px !important;
+    }
+
+    .top-user .name {
+        font-size: 11px !important;
+    }
+
+    .top-user .role {
+        font-size: 9px !important;
+    }
+
+    .content {
+        padding:
+            1rem
+            0.75rem
+            0.75rem !important;
     }
 }

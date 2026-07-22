@@ -3,6 +3,8 @@
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -104,29 +106,52 @@ Route::middleware('auth')->group(function () {
         return view('map.index');
     })->name('map.index');
 
+    /*
+|--------------------------------------------------------------------------
+| Personal Profile
+|--------------------------------------------------------------------------
+*/
+
+Route::get(
+    '/profile',
+    [UserController::class, 'profile']
+)->name('profile.show');
+
+
+Route::get(
+    '/profile/edit',
+    [UserController::class, 'editProfile']
+)->name('profile.edit');
+
+
+Route::put(
+    '/profile',
+    [UserController::class, 'updateProfile']
+)->name('profile.update');
+
 
     /*
-    |--------------------------------------------------------------------------
-    | Users
-    |--------------------------------------------------------------------------
-    */
+|--------------------------------------------------------------------------
+| Users - Admin Only
+|--------------------------------------------------------------------------
+*/
 
-    Route::get('/users', function () {
-        return view('users.index');
-    })->name('users.index');
+Route::middleware('admin')->group(function () {
+    Route::patch(
+    '/users/{user}/toggle-status',
+    [UserController::class, 'toggleStatus']
+)->name('users.toggle-status');
 
-    Route::get('/users/create', function () {
-        return view('users.create');
-    })->name('users.create');
-
-    Route::get('/users/{id}/edit', function ($id) {
-        return view('users.edit');
-    })->name('users.edit');
-
-    Route::get('/users/{id}', function ($id) {
-        return view('users.show');
-    })->name('users.show');
-
+    Route::resource('users', UserController::class)
+        ->only([
+            'index',
+            'create',
+            'store',
+            'show',
+            'edit',
+            'update',
+        ]);
+});
 
     /*
     |--------------------------------------------------------------------------

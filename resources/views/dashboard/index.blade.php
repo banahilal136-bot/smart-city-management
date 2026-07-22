@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="mb-4">
-    <h1 class="page-title">مرحباً بك، أحمد 👋</h1>
+    <h1 class="page-title">مرحباً بك، {{ auth()->user()->name }} 👋</h1>
     <p class="page-subtitle">إليك نظرة عامة على البلاغات في المدينة</p>
 </div>
 

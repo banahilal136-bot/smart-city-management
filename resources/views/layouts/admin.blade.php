@@ -94,13 +94,21 @@
                 <li class="sidebar-header">
                     الإدارة
                 </li>
+                
+    <li class="sidebar-item {{ request()->routeIs('users.*') ? 'active' : '' }}">
 
-                <li class="sidebar-item {{ request()->routeIs('users.index') || request()->routeIs('users.create') || request()->routeIs('users.show') || request()->routeIs('users.edit') ? 'active' : '' }}">
-                    <a class="sidebar-link" href="{{ route('users.index') }}">
-                        <i class="align-middle" data-feather="users"></i>
-                        <span class="align-middle">المستخدمون</span>
-                    </a>
-                </li>
+        <a
+            class="sidebar-link"
+            href="{{ route('users.index') }}"
+        >
+            <i class="align-middle" data-feather="users"></i>
+
+            <span class="align-middle">
+                المستخدمون
+            </span>
+        </a>
+
+    </li>
 
                 <li class="sidebar-item {{ request()->routeIs('report-types.index') || request()->routeIs('report-types.create') || request()->routeIs('report-types.edit') ? 'active' : '' }}">
                     <a class="sidebar-link" href="{{ route('report-types.index') }}">
@@ -174,8 +182,12 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-end">
-                            <a class="dropdown-item" href="#">الملف الشخصي</a>
-                            <a class="dropdown-item" href="#">الإعدادات</a>
+                            <a class="dropdown-item" href="{{ route('profile.show') }}">
+    الملف الشخصي
+</a>
+                           <a class="dropdown-item" href="{{ route('profile.edit') }}">
+    الإعدادات
+</a>
                             <div class="dropdown-divider"></div>
                             <form
     action="{{ route('logout') }}"

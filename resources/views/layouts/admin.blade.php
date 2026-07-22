@@ -147,8 +147,28 @@
                             <span class="top-user">
                                 <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="user">
                                 <span>
-                                    <p class="name">أحمد محمد</p>
-                                    <p class="role">Admin</p>
+                                    <p class="name">
+    {{ auth()->user()->name }}
+</p>
+
+<p class="role">
+    @switch(auth()->user()->role)
+        @case('admin')
+            Admin
+            @break
+
+        @case('employee')
+            Employee
+            @break
+
+        @case('citizen')
+            Citizen
+            @break
+
+        @default
+            User
+    @endswitch
+</p>
                                 </span>
                             </span>
                         </a>
@@ -157,10 +177,21 @@
                             <a class="dropdown-item" href="#">الملف الشخصي</a>
                             <a class="dropdown-item" href="#">الإعدادات</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{ route('login') }}">
-                                <i data-feather="log-out"></i>
-                                 تسجيل الخروج
-                            </a>
+                            <form
+    action="{{ route('logout') }}"
+    method="POST"
+    style="margin: 0;"
+>
+    @csrf
+
+    <button
+        type="submit"
+        class="dropdown-item"
+    >
+        <i data-feather="log-out"></i>
+        تسجيل الخروج
+    </button>
+</form>
                         </div>
                     </li>
 

@@ -17,7 +17,7 @@
     </div>
 
 
-    <form action="#" method="POST">
+    <form action="{{ route('register.store') }}" method="POST">
 
         @csrf
 
@@ -35,8 +35,24 @@
                 name="name"
                 class="auth-input"
                 placeholder="أدخل الاسم الكامل"
+                value="{{ old('name') }}"
                 autocomplete="name"
+                required
+                autofocus
             >
+
+            @error('name')
+                <div
+                    style="
+                        margin-top: 6px;
+                        color: #dc2626;
+                        font-size: 11px;
+                        font-weight: 700;
+                    "
+                >
+                    {{ $message }}
+                </div>
+            @enderror
 
         </div>
 
@@ -54,8 +70,23 @@
                 name="email"
                 class="auth-input"
                 placeholder="example@email.com"
+                value="{{ old('email') }}"
                 autocomplete="email"
+                required
             >
+
+            @error('email')
+                <div
+                    style="
+                        margin-top: 6px;
+                        color: #dc2626;
+                        font-size: 11px;
+                        font-weight: 700;
+                    "
+                >
+                    {{ $message }}
+                </div>
+            @enderror
 
         </div>
 
@@ -73,8 +104,23 @@
                 name="phone"
                 class="auth-input"
                 placeholder="أدخل رقم الهاتف"
+                value="{{ old('phone') }}"
                 autocomplete="tel"
+                required
             >
+
+            @error('phone')
+                <div
+                    style="
+                        margin-top: 6px;
+                        color: #dc2626;
+                        font-size: 11px;
+                        font-weight: 700;
+                    "
+                >
+                    {{ $message }}
+                </div>
+            @enderror
 
         </div>
 
@@ -93,7 +139,21 @@
                 class="auth-input"
                 placeholder="أدخل كلمة المرور"
                 autocomplete="new-password"
+                required
             >
+
+            @error('password')
+                <div
+                    style="
+                        margin-top: 6px;
+                        color: #dc2626;
+                        font-size: 11px;
+                        font-weight: 700;
+                    "
+                >
+                    {{ $message }}
+                </div>
+            @enderror
 
         </div>
 
@@ -112,6 +172,7 @@
                 class="auth-input"
                 placeholder="أعد إدخال كلمة المرور"
                 autocomplete="new-password"
+                required
             >
 
         </div>
@@ -119,9 +180,8 @@
 
         <!-- Register Button -->
         <button
-            type="button"
+            type="submit"
             class="auth-submit"
-            onclick="window.location.href='{{ url('/login') }}'"
         >
             إنشاء الحساب
         </button>
@@ -132,7 +192,7 @@
 
             لديك حساب بالفعل؟
 
-            <a href="{{ url('/login') }}">
+            <a href="{{ route('login') }}">
                 تسجيل الدخول
             </a>
 

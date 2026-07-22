@@ -17,7 +17,7 @@
     </div>
 
 
-    <form action="#" method="POST">
+    <form action="{{ route('login.store') }}" method="POST">
 
         @csrf
 
@@ -35,8 +35,24 @@
                 name="email"
                 class="auth-input"
                 placeholder="example@email.com"
+                value="{{ old('email') }}"
                 autocomplete="email"
+                required
+                autofocus
             >
+
+            @error('email')
+                <div
+                    style="
+                        margin-top: 6px;
+                        color: #dc2626;
+                        font-size: 11px;
+                        font-weight: 700;
+                    "
+                >
+                    {{ $message }}
+                </div>
+            @enderror
 
         </div>
 
@@ -57,9 +73,23 @@
                     class="auth-input"
                     placeholder="أدخل كلمة المرور"
                     autocomplete="current-password"
+                    required
                 >
 
             </div>
+
+            @error('password')
+                <div
+                    style="
+                        margin-top: 6px;
+                        color: #dc2626;
+                        font-size: 11px;
+                        font-weight: 700;
+                    "
+                >
+                    {{ $message }}
+                </div>
+            @enderror
 
         </div>
 
@@ -90,11 +120,13 @@
                 <input
                     type="checkbox"
                     name="remember"
+                    value="1"
                     style="
                         width: 16px;
                         height: 16px;
                         accent-color: #2f8f83;
                     "
+                    {{ old('remember') ? 'checked' : '' }}
                 >
 
                 تذكرني
@@ -119,9 +151,8 @@
 
         <!-- Login Button -->
         <button
-            type="button"
+            type="submit"
             class="auth-submit"
-            onclick="window.location.href='{{ route('dashboard') }}'"
         >
             تسجيل الدخول
         </button>
@@ -132,7 +163,7 @@
 
             ليس لديك حساب؟
 
-            <a href="{{ url('/register') }}">
+            <a href="{{ route('register') }}">
                 إنشاء حساب جديد
             </a>
 

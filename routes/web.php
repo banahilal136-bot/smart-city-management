@@ -5,7 +5,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ReportTypeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -80,21 +80,18 @@ Route::middleware('auth')->group(function () {
     |--------------------------------------------------------------------------
     */
 
-    Route::get('/reports', function () {
-        return view('reports.index');
-    })->name('reports.index');
+   /*
+|--------------------------------------------------------------------------
+| Reports
+|--------------------------------------------------------------------------
+*/
 
-    Route::get('/reports/create', function () {
-        return view('reports.create');
-    })->name('reports.create');
+Route::patch(
+    '/reports/{report}/status',
+    [ReportController::class, 'updateStatus']
+)->name('reports.update-status');
 
-    Route::get('/reports/{id}/edit', function ($id) {
-        return view('reports.edit');
-    })->name('reports.edit');
-
-    Route::get('/reports/{id}', function ($id) {
-        return view('reports.show');
-    })->name('reports.show');
+Route::resource('reports', ReportController::class);
 
 
     /*

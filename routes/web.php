@@ -2,8 +2,9 @@
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Auth\RegisteredUserController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ReportTypeController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Route;
 
 
 /*
@@ -27,7 +28,6 @@ Route::get('/', function () {
 
 Route::middleware('guest')->group(function () {
 
-    // Login
     Route::get('/login', [AuthenticatedSessionController::class, 'create'])
         ->name('login');
 
@@ -35,7 +35,6 @@ Route::middleware('guest')->group(function () {
         ->name('login.store');
 
 
-    // Register
     Route::get('/register', [RegisteredUserController::class, 'create'])
         ->name('register');
 
@@ -58,8 +57,10 @@ Route::middleware('auth')->group(function () {
     |--------------------------------------------------------------------------
     */
 
-    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
-        ->name('logout');
+    Route::post(
+        '/logout',
+        [AuthenticatedSessionController::class, 'destroy']
+    )->name('logout');
 
 
     /*
@@ -106,68 +107,73 @@ Route::middleware('auth')->group(function () {
         return view('map.index');
     })->name('map.index');
 
-    /*
-|--------------------------------------------------------------------------
-| Personal Profile
-|--------------------------------------------------------------------------
-*/
-
-Route::get(
-    '/profile',
-    [UserController::class, 'profile']
-)->name('profile.show');
-
-
-Route::get(
-    '/profile/edit',
-    [UserController::class, 'editProfile']
-)->name('profile.edit');
-
-
-Route::put(
-    '/profile',
-    [UserController::class, 'updateProfile']
-)->name('profile.update');
-
-
-    /*
-|--------------------------------------------------------------------------
-| Users - Admin Only
-|--------------------------------------------------------------------------
-*/
-
-Route::middleware('admin')->group(function () {
-    Route::patch(
-    '/users/{user}/toggle-status',
-    [UserController::class, 'toggleStatus']
-)->name('users.toggle-status');
-
-    Route::resource('users', UserController::class)
-        ->only([
-            'index',
-            'create',
-            'store',
-            'show',
-            'edit',
-            'update',
-        ]);
-});
 
     /*
     |--------------------------------------------------------------------------
-    | Report Types
+    | Personal Profile
     |--------------------------------------------------------------------------
     */
 
-    Route::get('/report-types', function () {
-        return view('report_types.index');
-    })->name('report-types.index');
+    Route::get(
+        '/profile',
+        [UserController::class, 'profile']
+    )->name('profile.show');
 
-    Route::get('/report-types/create', function () {
-        return view('report_types.create');
-    })->name('report-types.create');
+    Route::get(
+        '/profile/edit',
+        [UserController::class, 'editProfile']
+    )->name('profile.edit');
 
-    Route::get('/report-types/{id}/edit', function ($id) {
-        return view('report_types.edit');
-    })->name('report-types.edit');
+    Route::put(
+        '/profile',
+        [UserController::class, 'updateProfile']
+    )->name('profile.update');
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Admin Only Routes
+    |--------------------------------------------------------------------------
+    */
+
+    Route::middleware('admin')->group(function () {
+
+        /*
+        |--------------------------------------------------------------------------
+        | Users
+        |--------------------------------------------------------------------------
+        */
+
+        Route::patch(
+            '/users/{user}/toggle-status',
+            [UserController::class, 'toggleStatus']
+        )->name('users.toggle-status');
+
+        Route::resource('users', UserController::class)
+            ->only([
+                'index',
+                'create',
+                'store',
+                'show',
+                'edit',
+                'update',
+            ]);
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Report Types
+        |--------------------------------------------------------------------------
+        */
+
+        Route::patch(
+            '/report-types/{report_type}/toggle-status',
+            [ReportTypeController::class, 'toggleStatus']
+        )->name('report-types.toggle-status');
+
+        Route::resource(
+            'report-types',
+            ReportTypeController::class
+        );
+    });
 });

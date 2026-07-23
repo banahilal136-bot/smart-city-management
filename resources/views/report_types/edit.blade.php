@@ -71,107 +71,376 @@
         font-size: 13px;
         margin-bottom: 0;
     }
+
+    .report-type-edit-page .invalid-feedback {
+        display: block;
+    }
 </style>
 
 <div class="report-type-edit-page">
 
-    <div class="mb-4 d-flex justify-content-between align-items-center">
+    <div class="mb-4 d-flex justify-content-between align-items-center flex-wrap gap-3">
+
         <div>
             <h1 class="page-title">تعديل نوع البلاغ</h1>
-            <p class="page-subtitle">تحديث بيانات التصنيف المستخدم لتنظيم البلاغات</p>
+
+            <p class="page-subtitle">
+                تحديث بيانات التصنيف المستخدم لتنظيم البلاغات
+            </p>
         </div>
 
-        <a href="{{ route('report-types.index') }}" class="btn btn-outline-primary">
+        <a
+            href="{{ route('report-types.index') }}"
+            class="btn btn-outline-primary">
+
             رجوع إلى أنواع البلاغات
         </a>
     </div>
+
+    @if ($errors->any())
+
+        <div class="alert alert-danger">
+
+            <strong>يرجى تصحيح الأخطاء التالية:</strong>
+
+            <ul class="mb-0 mt-2">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+
+        </div>
+
+    @endif
 
     <div class="row g-4">
 
         <div class="col-lg-8">
 
             <div class="card">
+
                 <div class="card-header">
-                    <h5 class="card-title">بيانات نوع البلاغ</h5>
-                    <small class="text-muted">تعديل معلومات النوع الحالي</small>
+
+                    <h5 class="card-title">
+                        بيانات نوع البلاغ
+                    </h5>
+
+                    <small class="text-muted">
+                        تعديل معلومات النوع الحالي
+                    </small>
+
                 </div>
 
                 <div class="card-body">
 
-                    <form action="#" method="POST">
+                    <form
+                        action="{{ route('report-types.update', $reportType) }}"
+                        method="POST">
+
+                        @csrf
+                        @method('PUT')
 
                         <div class="row g-3">
 
+                            {{-- اسم النوع --}}
                             <div class="col-md-6">
-                                <label class="form-label">اسم النوع</label>
-                                <input type="text" class="form-control" value="طرق">
+
+                                <label for="name" class="form-label">
+                                    اسم النوع
+                                    <span class="text-danger">*</span>
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    value="{{ old('name', $reportType->name) }}"
+                                    class="form-control @error('name') is-invalid @enderror"
+                                    placeholder="مثال: طرق">
+
+                                @error('name')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+
                             </div>
 
+                            {{-- الأيقونة --}}
                             <div class="col-md-6">
-                                <label class="form-label">الأيقونة</label>
-                                <select class="form-select">
-                                    <option value="map" selected>طرق</option>
-                                    <option value="trash-2">نظافة</option>
-                                    <option value="zap">إنارة</option>
-                                    <option value="droplet">مياه</option>
-                                    <option value="sun">حدائق</option>
-                                    <option value="alert-triangle">طارئ</option>
+
+                                <label for="icon" class="form-label">
+                                    الأيقونة
+                                </label>
+
+                                <select
+                                    id="icon"
+                                    name="icon"
+                                    class="form-select @error('icon') is-invalid @enderror">
+
+                                    <option value="">
+                                        اختاري أيقونة
+                                    </option>
+
+                                    <option
+                                        value="map"
+                                        @selected(old('icon', $reportType->icon) === 'map')>
+                                        طرق
+                                    </option>
+
+                                    <option
+                                        value="trash-2"
+                                        @selected(old('icon', $reportType->icon) === 'trash-2')>
+                                        نظافة
+                                    </option>
+
+                                    <option
+                                        value="zap"
+                                        @selected(old('icon', $reportType->icon) === 'zap')>
+                                        إنارة
+                                    </option>
+
+                                    <option
+                                        value="droplet"
+                                        @selected(old('icon', $reportType->icon) === 'droplet')>
+                                        مياه
+                                    </option>
+
+                                    <option
+                                        value="sun"
+                                        @selected(old('icon', $reportType->icon) === 'sun')>
+                                        حدائق
+                                    </option>
+
+                                    <option
+                                        value="alert-triangle"
+                                        @selected(old('icon', $reportType->icon) === 'alert-triangle')>
+                                        طارئ
+                                    </option>
+
+                                    <option
+                                        value="tool"
+                                        @selected(old('icon', $reportType->icon) === 'tool')>
+                                        صيانة
+                                    </option>
+
+                                    <option
+                                        value="tag"
+                                        @selected(old('icon', $reportType->icon) === 'tag')>
+                                        عام
+                                    </option>
+
                                 </select>
+
+                                @error('icon')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+
                             </div>
 
+                            {{-- الأولوية --}}
                             <div class="col-md-6">
-                                <label class="form-label">الأولوية</label>
-                                <select class="form-select">
-                                    <option selected>عالية</option>
-                                    <option>متوسطة</option>
-                                    <option>منخفضة</option>
+
+                                <label for="priority" class="form-label">
+                                    الأولوية
+                                    <span class="text-danger">*</span>
+                                </label>
+
+                                <select
+                                    id="priority"
+                                    name="priority"
+                                    class="form-select @error('priority') is-invalid @enderror">
+
+                                    <option
+                                        value="high"
+                                        @selected(old('priority', $reportType->priority) === 'high')>
+                                        عالية
+                                    </option>
+
+                                    <option
+                                        value="medium"
+                                        @selected(old('priority', $reportType->priority) === 'medium')>
+                                        متوسطة
+                                    </option>
+
+                                    <option
+                                        value="low"
+                                        @selected(old('priority', $reportType->priority) === 'low')>
+                                        منخفضة
+                                    </option>
+
                                 </select>
+
+                                @error('priority')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+
                             </div>
 
+                            {{-- الحالة --}}
                             <div class="col-md-6">
-                                <label class="form-label">الحالة</label>
-                                <select class="form-select">
-                                    <option selected>فعال</option>
-                                    <option>غير فعال</option>
+
+                                <label for="status" class="form-label">
+                                    الحالة
+                                    <span class="text-danger">*</span>
+                                </label>
+
+                                <select
+                                    id="status"
+                                    name="status"
+                                    class="form-select @error('status') is-invalid @enderror">
+
+                                    <option
+                                        value="active"
+                                        @selected(old('status', $reportType->status) === 'active')>
+                                        فعال
+                                    </option>
+
+                                    <option
+                                        value="inactive"
+                                        @selected(old('status', $reportType->status) === 'inactive')>
+                                        غير فعال
+                                    </option>
+
                                 </select>
+
+                                @error('status')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+
                             </div>
 
-                            <div class="col-md-6">
-                                <label class="form-label">القسم المسؤول</label>
-                                <select class="form-select">
-                                    <option selected>قسم الطرق</option>
-                                    <option>قسم النظافة</option>
-                                    <option>قسم الإنارة</option>
-                                    <option>قسم المياه</option>
-                                    <option>قسم الحدائق</option>
-                                </select>
-                            </div>
-
-                            <div class="col-md-6">
-                                <label class="form-label">تاريخ الإضافة</label>
-                                <input type="date" class="form-control" value="2026-07-01">
-                            </div>
-
+                            {{-- القسم المسؤول --}}
                             <div class="col-md-12">
-                                <label class="form-label">وصف النوع</label>
-                                <textarea class="form-control" rows="4">مشاكل الحفر والأرصفة والازدحام والطرق المتضررة داخل المدينة.</textarea>
+
+                                <label for="department" class="form-label">
+                                    القسم المسؤول
+                                </label>
+
+                                <select
+                                    id="department"
+                                    name="department"
+                                    class="form-select @error('department') is-invalid @enderror">
+
+                                    <option value="">
+                                        اختاري القسم
+                                    </option>
+
+                                    <option
+                                        value="قسم الطرق"
+                                        @selected(old('department', $reportType->department) === 'قسم الطرق')>
+                                        قسم الطرق
+                                    </option>
+
+                                    <option
+                                        value="قسم النظافة"
+                                        @selected(old('department', $reportType->department) === 'قسم النظافة')>
+                                        قسم النظافة
+                                    </option>
+
+                                    <option
+                                        value="قسم الإنارة"
+                                        @selected(old('department', $reportType->department) === 'قسم الإنارة')>
+                                        قسم الإنارة
+                                    </option>
+
+                                    <option
+                                        value="قسم المياه"
+                                        @selected(old('department', $reportType->department) === 'قسم المياه')>
+                                        قسم المياه
+                                    </option>
+
+                                    <option
+                                        value="قسم الحدائق"
+                                        @selected(old('department', $reportType->department) === 'قسم الحدائق')>
+                                        قسم الحدائق
+                                    </option>
+
+                                    <option
+                                        value="قسم الصيانة"
+                                        @selected(old('department', $reportType->department) === 'قسم الصيانة')>
+                                        قسم الصيانة
+                                    </option>
+
+                                </select>
+
+                                @error('department')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+
                             </div>
 
+                            {{-- الوصف --}}
                             <div class="col-md-12">
-                                <label class="form-label">ملاحظات داخلية</label>
-                                <textarea class="form-control" rows="3" placeholder="ملاحظات إدارية لا تظهر للمواطنين...">يتم تحويل البلاغات المرتبطة بهذا النوع إلى قسم الطرق.</textarea>
+
+                                <label for="description" class="form-label">
+                                    وصف النوع
+                                </label>
+
+                                <textarea
+                                    id="description"
+                                    name="description"
+                                    rows="4"
+                                    class="form-control @error('description') is-invalid @enderror"
+                                    placeholder="اكتبي وصفًا مختصرًا لنوع البلاغ...">{{ old('description', $reportType->description) }}</textarea>
+
+                                @error('description')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+
+                            </div>
+
+                            {{-- الملاحظات الداخلية --}}
+                            <div class="col-md-12">
+
+                                <label for="internal_notes" class="form-label">
+                                    ملاحظات داخلية
+                                </label>
+
+                                <textarea
+                                    id="internal_notes"
+                                    name="internal_notes"
+                                    rows="3"
+                                    class="form-control @error('internal_notes') is-invalid @enderror"
+                                    placeholder="ملاحظات إدارية لا تظهر للمواطنين...">{{ old('internal_notes', $reportType->internal_notes) }}</textarea>
+
+                                @error('internal_notes')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+
                             </div>
 
                         </div>
 
                         <div class="d-flex justify-content-end gap-2 mt-4">
-                            <a href="{{ route('report-types.index') }}" class="btn btn-light">
+
+                            <a
+                                href="{{ route('report-types.index') }}"
+                                class="btn btn-light">
+
                                 إلغاء
                             </a>
 
-                            <button type="button" class="btn btn-primary">
+                            <button
+                                type="submit"
+                                class="btn btn-primary">
+
+                                <i data-feather="save"></i>
                                 حفظ التعديلات
                             </button>
+
                         </div>
 
                     </form>
@@ -183,25 +452,69 @@
 
         <div class="col-lg-4">
 
+            {{-- المعاينة --}}
             <div class="card form-help-card mb-4">
+
                 <div class="card-body type-preview">
 
-                    <div class="preview-icon">
-                        <i data-feather="map"></i>
+                    <div
+                        id="previewIconContainer"
+                        class="preview-icon">
+
+                        <i
+                            data-feather="{{ old('icon', $reportType->icon) ?: 'tag' }}">
+                        </i>
+
                     </div>
 
-                    <h5 class="card-title">طرق</h5>
-                    <p class="text-muted mb-3">
-                        مشاكل الحفر والأرصفة والازدحام.
+                    <h5
+                        id="previewName"
+                        class="card-title">
+
+                        {{ old('name', $reportType->name) }}
+                    </h5>
+
+                    <p
+                        id="previewDescription"
+                        class="text-muted mb-3">
+
+                        {{ old('description', $reportType->description) ?: 'لا يوجد وصف لهذا النوع.' }}
                     </p>
 
-                    <span class="badge bg-danger">عالية</span>
-                    <span class="badge bg-success">فعال</span>
+                    <span
+                        id="previewPriority"
+                        class="badge
+                        {{ old('priority', $reportType->priority) === 'high'
+                            ? 'bg-danger'
+                            : (old('priority', $reportType->priority) === 'medium'
+                                ? 'bg-warning text-dark'
+                                : 'bg-secondary') }}">
+
+                        {{ old('priority', $reportType->priority) === 'high'
+                            ? 'عالية'
+                            : (old('priority', $reportType->priority) === 'medium'
+                                ? 'متوسطة'
+                                : 'منخفضة') }}
+                    </span>
+
+                    <span
+                        id="previewStatus"
+                        class="badge
+                        {{ old('status', $reportType->status) === 'active'
+                            ? 'bg-success'
+                            : 'bg-danger' }}">
+
+                        {{ old('status', $reportType->status) === 'active'
+                            ? 'فعال'
+                            : 'غير فعال' }}
+                    </span>
 
                 </div>
             </div>
 
+            {{-- معلومات النوع --}}
             <div class="card mb-4">
+
                 <div class="card-header">
                     <h5 class="card-title">معلومات النوع</h5>
                 </div>
@@ -209,29 +522,59 @@
                 <div class="card-body">
 
                     <div class="info-row">
-                        <div class="info-label">رقم النوع</div>
-                        <div class="info-value">#1</div>
+
+                        <div class="info-label">
+                            رقم النوع
+                        </div>
+
+                        <div class="info-value">
+                            #{{ $reportType->id }}
+                        </div>
+
                     </div>
 
                     <div class="info-row">
-                        <div class="info-label">عدد البلاغات المرتبطة</div>
-                        <div class="info-value">35 بلاغ</div>
+
+                        <div class="info-label">
+                            عدد البلاغات المرتبطة
+                        </div>
+
+                        <div class="info-value">
+                            {{ $reportType->reports_count }} بلاغ
+                        </div>
+
                     </div>
 
                     <div class="info-row">
-                        <div class="info-label">تاريخ الإضافة</div>
-                        <div class="info-value">2026-07-01</div>
+
+                        <div class="info-label">
+                            تاريخ الإضافة
+                        </div>
+
+                        <div class="info-value">
+                            {{ $reportType->created_at->format('Y-m-d') }}
+                        </div>
+
                     </div>
 
                     <div class="info-row">
-                        <div class="info-label">آخر تحديث</div>
-                        <div class="info-value">2026-07-08</div>
+
+                        <div class="info-label">
+                            آخر تحديث
+                        </div>
+
+                        <div class="info-value">
+                            {{ $reportType->updated_at->format('Y-m-d') }}
+                        </div>
+
                     </div>
 
                 </div>
             </div>
 
+            {{-- التنبيهات --}}
             <div class="card">
+
                 <div class="card-header">
                     <h5 class="card-title">تنبيهات مهمة</h5>
                 </div>
@@ -239,24 +582,39 @@
                 <div class="card-body">
 
                     <div class="guide-item">
-                        <div class="guide-title">تغيير الحالة</div>
+
+                        <div class="guide-title">
+                            تغيير الحالة
+                        </div>
+
                         <p class="guide-desc">
                             عند جعل النوع غير فعال لن يظهر للمواطن عند إنشاء بلاغ جديد.
                         </p>
+
                     </div>
 
                     <div class="guide-item">
-                        <div class="guide-title">تغيير الاسم</div>
+
+                        <div class="guide-title">
+                            تغيير الاسم
+                        </div>
+
                         <p class="guide-desc">
                             يفضّل اختيار اسم واضح حتى يفهم المواطن نوع البلاغ بسهولة.
                         </p>
+
                     </div>
 
                     <div class="guide-item mb-0">
-                        <div class="guide-title">البلاغات المرتبطة</div>
+
+                        <div class="guide-title">
+                            البلاغات المرتبطة
+                        </div>
+
                         <p class="guide-desc">
-                            حذف النوع لاحقاً يحتاج الانتباه للبلاغات المرتبطة به.
+                            لا يمكن حذف النوع إذا كان مرتبطًا ببلاغات موجودة.
                         </p>
+
                     </div>
 
                 </div>
@@ -267,5 +625,74 @@
     </div>
 
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+
+        const nameInput = document.getElementById('name');
+        const descriptionInput = document.getElementById('description');
+        const iconSelect = document.getElementById('icon');
+        const prioritySelect = document.getElementById('priority');
+        const statusSelect = document.getElementById('status');
+
+        const previewName = document.getElementById('previewName');
+        const previewDescription = document.getElementById('previewDescription');
+        const previewIconContainer = document.getElementById('previewIconContainer');
+        const previewPriority = document.getElementById('previewPriority');
+        const previewStatus = document.getElementById('previewStatus');
+
+        nameInput.addEventListener('input', function () {
+            previewName.textContent =
+                this.value.trim() || 'نوع البلاغ';
+        });
+
+        descriptionInput.addEventListener('input', function () {
+            previewDescription.textContent =
+                this.value.trim() || 'لا يوجد وصف لهذا النوع.';
+        });
+
+        iconSelect.addEventListener('change', function () {
+
+            const iconName = this.value || 'tag';
+
+            previewIconContainer.innerHTML =
+                `<i data-feather="${iconName}"></i>`;
+
+            if (window.feather) {
+                feather.replace();
+            }
+        });
+
+        prioritySelect.addEventListener('change', function () {
+
+            previewPriority.className = 'badge';
+
+            if (this.value === 'high') {
+                previewPriority.textContent = 'عالية';
+                previewPriority.classList.add('bg-danger');
+            } else if (this.value === 'medium') {
+                previewPriority.textContent = 'متوسطة';
+                previewPriority.classList.add('bg-warning', 'text-dark');
+            } else {
+                previewPriority.textContent = 'منخفضة';
+                previewPriority.classList.add('bg-secondary');
+            }
+        });
+
+        statusSelect.addEventListener('change', function () {
+
+            previewStatus.className = 'badge';
+
+            if (this.value === 'active') {
+                previewStatus.textContent = 'فعال';
+                previewStatus.classList.add('bg-success');
+            } else {
+                previewStatus.textContent = 'غير فعال';
+                previewStatus.classList.add('bg-danger');
+            }
+        });
+
+    });
+</script>
 
 @endsection
